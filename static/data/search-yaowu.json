@@ -1,0 +1,41 @@
+[
+  {
+    "clinicalGuidelines": {
+        "total": 29,
+        "domestic": 14,
+        "foreign": 15
+    },
+    "drugLabels": {
+        "total": 39,
+        "domestic": 14,
+        "foreign": 25
+    },
+    "clinicalTrial": {
+        "total": 22,
+        "domestic": 4,
+        "foreign": 18
+    },
+    "patent": {
+        "total": 9,
+        "domestic": 4,
+        "foreign": 5
+    },
+     "clinicalAnnotation":  {
+        "total": 22,
+        "domestic": 10,
+        "foreign": 12
+    },
+    "pathway": 7,
+    "baseInfo": {
+        "name": "奥美拉唑(药物)",
+        "englishName": "omeprazole",
+        "tradeName": "奥派，优克，博思清",
+        "atcCode": "A02BC01",
+        "drugType1": "消化道及代谢",
+        "drugType2": "治疗与胃酸分泌相关疾病的药物",
+        "drugType3": "消化道溃疡和胃食管返流病治疗药物",
+        "drugType4": "质子泵抑制药"
+    }
+}
+
+]

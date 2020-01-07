@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "593484",
+      "name": "菜单",
+      "font_class": "weibiaoti12",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "1718353",
+      "name": "下箭头",
+      "font_class": "xiajiantou",
+      "unicode": "f034e",
+      "unicode_decimal": 983886
+    }
+  ]
+}

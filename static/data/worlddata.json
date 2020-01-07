@@ -1,0 +1,727 @@
+[{
+    "fatherRace": null,
+    "race": "1000 Genomes",
+    "area": null,
+    "testSmounts": 2504,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 1539,
+        "proportion": "61.46%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 821,
+        "proportion": "32.79%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 144,
+        "proportion": "5.75%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "African",
+    "area": "非洲",
+    "testSmounts": 661,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 459,
+        "proportion": "69.44%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 179,
+        "proportion": "27.08%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 23,
+        "proportion": "3.48%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "African Ancestry",
+    "area": "美国西南部",
+    "testSmounts": 61,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 45,
+        "proportion": "73.77%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 15,
+        "proportion": "24.59%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1,
+        "proportion": "1.64%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "African Caribbean",
+    "area": "巴巴多斯",
+    "testSmounts": 96,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 68,
+        "proportion": "70.83%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 27,
+        "proportion": "28.12%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1,
+        "proportion": "1.04%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "American",
+    "area": "美洲",
+    "testSmounts": 347,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 277,
+        "proportion": "79.83%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 67,
+        "proportion": "19.31%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 3,
+        "proportion": "0.86%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "South Asian",
+    "race": "Bengali",
+    "area": "孟加拉国",
+    "testSmounts": 86,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 40,
+        "proportion": "46.51%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 36,
+        "proportion": "41.86%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 10,
+        "proportion": "11.63%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "European",
+    "race": "British",
+    "area": "英格兰和苏格兰",
+    "testSmounts": 91,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 66,
+        "proportion": "72.53%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 24,
+        "proportion": "26.37%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1,
+        "proportion": "1.10%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "Chinese",
+    "area": "中国",
+    "testSmounts": 19893,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 9205,
+        "proportion": "46.27%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 8720,
+        "proportion": "43.83%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1968,
+        "proportion": "9.89%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "East Asian",
+    "race": "Chinese Dai",
+    "area": "中国西双版纳",
+    "testSmounts": 93,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 49,
+        "proportion": "52.69%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 39,
+        "proportion": "41.94%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 5,
+        "proportion": "5.38%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "American",
+    "race": "Colombian",
+    "area": "哥伦比亚麦德林",
+    "testSmounts": 94,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 74,
+        "proportion": "78.72%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 20,
+        "proportion": "21.28%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 0,
+        "proportion": "0.00%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "East Asian",
+    "area": "东亚",
+    "testSmounts": 504,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 227,
+        "proportion": "45.04%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 239,
+        "proportion": "47.42%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 38,
+        "proportion": "7.54%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "Esan",
+    "area": "尼日利亚",
+    "testSmounts": 99,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 63,
+        "proportion": "63.64%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 31,
+        "proportion": "31.31%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 5,
+        "proportion": "5.05%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "European",
+    "area": "欧洲",
+    "testSmounts": 503,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 363,
+        "proportion": "72.17%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 134,
+        "proportion": "26.64%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 6,
+        "proportion": "1.19%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "European",
+    "race": "Finnish",
+    "area": "芬兰",
+    "testSmounts": 99,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 58,
+        "proportion": "58.59%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 39,
+        "proportion": "39.39%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 2,
+        "proportion": "2.02%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "South Asian",
+    "race": "Gujarati Indian",
+    "area": "休斯顿",
+    "testSmounts": 103,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 50,
+        "proportion": "48.54%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 38,
+        "proportion": "36.89%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 15,
+        "proportion": "14.56%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "East Asian",
+    "race": "Han Chinese",
+    "area": "中国北京",
+    "testSmounts": 103,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 41,
+        "proportion": "39.81%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 55,
+        "proportion": "53.40%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 7,
+        "proportion": "6.80%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "European",
+    "race": "Iberian",
+    "area": "西班牙",
+    "testSmounts": 107,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 76,
+        "proportion": "71.03%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 31,
+        "proportion": "28.97%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 0,
+        "proportion": "0.00%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "South Asian",
+    "race": "Indian Telugu",
+    "area": "英国",
+    "testSmounts": 102,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 41,
+        "proportion": "40.20%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 46,
+        "proportion": "45.10%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 15,
+        "proportion": "14.71%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "East Asian",
+    "race": "Japanese",
+    "area": "日本东京",
+    "testSmounts": 104,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 48,
+        "proportion": "46.15%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 45,
+        "proportion": "43.27%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 11,
+        "proportion": "10.58%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "East Asian",
+    "race": "Kinh",
+    "area": "越南胡志明市",
+    "testSmounts": 99,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 50,
+        "proportion": "50.51%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 42,
+        "proportion": "42.42%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 7,
+        "proportion": "7.07%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "Luhya",
+    "area": "肯尼亚韦布耶",
+    "testSmounts": 99,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 62,
+        "proportion": "62.63%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 32,
+        "proportion": "32.32%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 5,
+        "proportion": "5.05%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "Mandinka",
+    "area": "冈比亚",
+    "testSmounts": 113,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 86,
+        "proportion": "76.11%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 24,
+        "proportion": "21.24%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 3,
+        "proportion": "2.65%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "Mende",
+    "area": "塞拉利昂",
+    "testSmounts": 85,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 58,
+        "proportion": "68.24%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 24,
+        "proportion": "28.24%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 3,
+        "proportion": "3.53%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "American",
+    "race": "Mexican Ancestry",
+    "area": "洛杉矶",
+    "testSmounts": 64,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 49,
+        "proportion": "76.56%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 14,
+        "proportion": "21.88%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1,
+        "proportion": "1.56%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "European",
+    "race": "Northern and Western European ancestry",
+    "area": "犹他州",
+    "testSmounts": 99,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 75,
+        "proportion": "75.76%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 22,
+        "proportion": "22.22%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 2,
+        "proportion": "2.02%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "American",
+    "race": "Peruvian",
+    "area": "秘鲁利马",
+    "testSmounts": 85,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 75,
+        "proportion": "88.24%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 10,
+        "proportion": "11.76%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 0,
+        "proportion": "0.00%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "American",
+    "race": "Puerto Rican",
+    "area": "波多黎各",
+    "testSmounts": 104,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 79,
+        "proportion": "75.96%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 23,
+        "proportion": "22.12%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 2,
+        "proportion": "1.92%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "South Asian",
+    "race": "Punjabi",
+    "area": "巴基斯坦拉合尔",
+    "testSmounts": 96,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 46,
+        "proportion": "47.92%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 34,
+        "proportion": "35.42%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 16,
+        "proportion": "16.67%"
+      }
+    ]
+  },
+  {
+    "fatherRace": null,
+    "race": "South Asian",
+    "area": "南亚",
+    "testSmounts": 489,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 213,
+        "proportion": "43.56%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 202,
+        "proportion": "41.31%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 74,
+        "proportion": "15.13%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "East Asian",
+    "race": "Southern Han Chinese",
+    "area": "中国南方",
+    "testSmounts": 105,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 39,
+        "proportion": "37.14%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 58,
+        "proportion": "55.24%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 8,
+        "proportion": "7.62%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "South Asian",
+    "race": "Sri Lankan Tamil",
+    "area": "英国",
+    "testSmounts": 102,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 36,
+        "proportion": "35.29%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 48,
+        "proportion": "47.06%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 18,
+        "proportion": "17.65%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "European",
+    "race": "Toscani",
+    "area": "意大利",
+    "testSmounts": 107,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 88,
+        "proportion": "82.24%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 18,
+        "proportion": "16.82%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 1,
+        "proportion": "0.93%"
+      }
+    ]
+  },
+  {
+    "fatherRace": "African",
+    "race": "Yoruba",
+    "area": "尼日利亚伊巴丹",
+    "testSmounts": 108,
+    "porKeyValueList": [{
+        "porName": "CC",
+        "testSmounts": 77,
+        "proportion": "71.30%"
+      },
+      {
+        "porName": "CT",
+        "testSmounts": 26,
+        "proportion": "24.07%"
+      },
+      {
+        "porName": "TT",
+        "testSmounts": 5,
+        "proportion": "4.63%"
+      }
+    ]
+  }
+]

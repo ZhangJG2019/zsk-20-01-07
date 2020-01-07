@@ -1,0 +1,36 @@
+[
+ {
+    "clinicalGuidelines": {
+        "total": 29,
+        "domestic": 14,
+        "foreign": 15
+    },
+    "drugLabels": {
+        "total": 39,
+        "domestic": 14,
+        "foreign": 25
+    },
+    "clinicalTrial": {
+        "total": 22,
+        "domestic": 4,
+        "foreign": 18
+    },
+    "patent": {
+        "total": 9,
+        "domestic": 4,
+        "foreign": 5
+    },
+    "clinicalAnnotation":  {
+        "total": 13,
+        "domestic": 10,
+        "foreign": 3
+    },
+    "pathway": 7,
+    "baseInfo": {
+        "name": "奥美拉唑-CYP2C19",
+        "englishName": "omeprazole-CYP2C19",
+        "code": "A02BC01.1557",
+        "projectRelationshipDescription": "关于奥美拉唑-CYP2C19这个项目的描述"
+    }
+}
+]

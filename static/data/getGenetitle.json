@@ -1,0 +1,11 @@
+[
+{
+  "name": "药物",
+  "code":"drug"
+},{
+  "name": "基因",
+  "code": "gene"
+},{
+  "name": "药物基因对",
+  "code": "project"
+}]

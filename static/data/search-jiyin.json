@@ -1,0 +1,34 @@
+[
+ {
+    "clinicalGuidelines": {
+        "total": 19,
+        "domestic": 14,
+        "foreign": 5
+    },
+    "drugLabels": {
+        "total": 29,
+        "domestic": 14,
+        "foreign": 15
+    },
+    "clinicalTrial": {
+        "total": 20,
+        "domestic": 12,
+        "foreign": 8
+    },
+    "patent": {
+        "total": 8,
+        "domestic": 6,
+        "foreign": 2
+    },
+     "clinicalAnnotation":  {
+        "total": 14,
+        "domestic": 5,
+        "foreign": 9
+    },
+    "pathway": 11,
+    "baseInfo": {
+        "alias": "CPCJ， CYP2C， CYPIIC17， CYPIIC19， P450C2C， P450IIC19",
+        "geneID": "1557"
+    }
+}
+]
