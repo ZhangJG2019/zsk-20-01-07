@@ -21,28 +21,52 @@
                   />
                 </li>
                 <li>
-                  <a href="http://47.105.75.254/#/home">首页</a>
+                  <a
+                    href="http://47.105.75.254/#/home"
+                    style="font-family:SimSun;"
+                  >首页</a>
                 </li>
                 <li>
-                  <a @click="See(columnLinkUrl_notice)">公告通知</a>
+                  <a
+                    @click="See(columnLinkUrl_notice)"
+                    style="font-family:SimSun;"
+                  >公告通知</a>
                 </li>
                 <li>
-                  <a @click="See(columnLinkUrl)">最新事件</a>
+                  <a
+                    @click="See(columnLinkUrl)"
+                    style="font-family:SimSun;"
+                  >最新事件</a>
                 </li>
                 <li>
-                  <a @click="See(columnLinkUrl_newContent)">最新研究</a>
+                  <a
+                    @click="See(columnLinkUrl_newContent)"
+                    style="font-family:SimSun;"
+                  >最新研究</a>
                 </li>
                 <li>
-                  <a @click.stop="tanchaung">任务大厅</a>
+                  <a
+                    @click.stop="tanchaung"
+                    style="font-family:SimSun;"
+                  >任务大厅</a>
                 </li>
                 <li>
-                  <a @click.stop="zskyonghu">知识库用户</a>
+                  <a
+                    @click.stop="zskyonghu"
+                    style="font-family:SimSun;"
+                  >知识库用户</a>
                 </li>
                 <li>
-                  <a @click.stop="xiazai">下载</a>
+                  <a
+                    @click.stop="xiazai"
+                    style="font-family:SimSun;"
+                  >下载</a>
                 </li>
                 <li>
-                  <a @click.stop="bangzhu">帮助</a>
+                  <a
+                    @click.stop="bangzhu"
+                    style="font-family:SimSun;"
+                  >帮助</a>
                 </li>
                 <!-- <li>
                   <a to="/">关于</a>
@@ -51,10 +75,12 @@
               <div class="user pr">
                 <p v-if="this.userName===null">
                   <a
+                    style="font-family:SimSun;"
                     class="denglu"
                     href="http://47.105.75.254:9100/cas?service=http://47.105.75.254:8080/jump"
                   >登录</a>
                   <a
+                    style="font-family:SimSun;"
                     href="/#/register"
                     class="zhuce"
                   >注册</a>
@@ -66,7 +92,7 @@
                 >
                   <span class="el-dropdown-link">
                     <span
-                      style="color:#000;cursor: pointer;"
+                      style="color:#000;cursor: pointer;font-family:SimSun;"
                       class="iconfont icon-weibiaoti12"
                     ></span>
                     菜单
@@ -74,40 +100,68 @@
                   </span>
                   <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item class="clearfix">
-                      <a href="http://47.105.75.254/#/home">首页</a>
+                      <a
+                        href="http://47.105.75.254/#/home"
+                        style="font-family:SimSun;"
+                      >首页</a>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click="See(columnLinkUrl_notice)">公告通知</p>
+                      <p
+                        @click="See(columnLinkUrl_notice)"
+                        style="font-family:SimSun;"
+                      >公告通知</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click="See(columnLinkUrl)">最新事件</p>
+                      <p
+                        @click="See(columnLinkUrl)"
+                        style="font-family:SimSun;"
+                      >最新事件</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click="See(columnLinkUrl_newContent)">最新研究</p>
+                      <p
+                        @click="See(columnLinkUrl_newContent)"
+                        style="font-family:SimSun;"
+                      >最新研究</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click.stop="tanchaung">任务大厅</p>
+                      <p
+                        @click.stop="tanchaung"
+                        style="font-family:SimSun;"
+                      >任务大厅</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click.stop="zskyonghu">知识库用户</p>
+                      <p
+                        @click.stop="zskyonghu"
+                        style="font-family:SimSun;"
+                      >知识库用户</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click.stop="xiazai">下载</p>
+                      <p
+                        @click.stop="xiazai"
+                        style="font-family:SimSun;"
+                      >下载</p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click.stop="bangzhu">帮助</p>
+                      <p
+                        @click.stop="bangzhu"
+                        style="font-family:SimSun;"
+                      >帮助</p>
                     </el-dropdown-item>
                     <!-- <el-dropdown-item class="clearfix">
                       <a to="/">关于</a>
                     </el-dropdown-item>-->
                     <el-dropdown-item class="clearfix">
                       <p
+                        style="font-family:SimSun;"
                         class="name"
                         v-text="this.userName"
                       ></p>
                     </el-dropdown-item>
                     <el-dropdown-item class="clearfix">
-                      <p @click="_loginOut">退出</p>
+                      <p
+                        @click="_loginOut"
+                        style="font-family:SimSun;"
+                      >退出</p>
                     </el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>

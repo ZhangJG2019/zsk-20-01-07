@@ -98,7 +98,7 @@ export default {
       font-size: 15px;
       line-height: 30px;
       text-indent: 2em;
-      padding-top: 10px;
+      // padding-top: 10px;
     }
   }
   .filter-box {

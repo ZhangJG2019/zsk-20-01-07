@@ -8,7 +8,12 @@
       <div slot="banner-text">
         <h4 class="box-title">
           <i class="jiyin-icon"></i>
-          <span class="text">基因(Genes)</span>
+          <p
+            class="text"
+            style="display:inline-block;line-height: 80px; padding:0;   text-indent: 0.8em;"
+          >基因(<span style="font-family:Times new roman,Times roman;"> Genes </span>)</p>
+          <!-- <span class="text">基因(Genes)</span> -->
+          <!-- style="font-family:Times new roman,Times roman;" -->
         </h4>
         <p class="text">知识库收录的是与药物相关的基因，并提供与基因相关的药物-基因信息以及来自中国北京人群的基因突变频率数据。</p>
         <p class="text">更多详情请查看具体基因。</p>
@@ -56,7 +61,7 @@
             <span class="list-icon"></span>
             <p style="color:#999;">基因</p>
             <p
-              style="font-size:18px;color:#333; line-height:30px; cursor: pointer"
+              style="font-family:Times new roman,Times roman;font-size:18px;color:#333; line-height:30px; cursor: pointer"
               @click="toSearchContent(item.id,item.name,'gene')"
             >{{item.name}}</p>
             <label-show titleName="相关项目名称">
@@ -74,9 +79,12 @@
               <el-table
                 :data="item.genePorInfo"
                 border
-                style="width: 100%"
+                style="width: 100%;"
+                :row-style="tableRowStyle"
+                :header-cell-style="tableHeaderColor"
               >
                 <el-table-column
+                  style="font-family:Times new roman,Times roman;"
                   prop="genePor"
                   label="位点"
                   align="center"
@@ -160,6 +168,16 @@ export default {
   },
   mounted() {},
   methods: {
+    // 修改table tr行的背景色
+    tableRowStyle({ row, rowIndex }) {
+      return 'font-family:Times new roman,Times roman;'
+    },
+    // 修改table header的背景色
+    tableHeaderColor({ row, column, rowIndex, columnIndex }) {
+      if (rowIndex === 0) {
+        return 'font-family:SimSun;'
+      }
+    },
     pageChange(v) {
       if (v === this.pageNum) return
       this.pageNum = v

@@ -11,7 +11,11 @@
       <div slot="banner-text">
         <h4 class="box-title">
           <i class="authority-icon"></i>
-          <span class="text">临床指南(Clinical Guidelines)</span>
+          <p
+            class="text"
+            style="display:inline-block;line-height: 80px; padding:0;   text-indent: 0.8em;"
+          >临床指南(<span style="font-family:Times new roman,Times roman;"> Clinical Guidelines </span>)</p>
+          <!-- <span class="text">临床指南(Clinical Guidelines)</span> -->
         </h4>
         <p class="text">
           临床指南是由临床药物遗传学实施联盟、（CPIC），荷兰皇家药剂师协会成立的药物遗传学工作组（DPWG），加拿大药物基因组学药品安全网（CPNDS），其他专业协会，中国专家共识基于PGx药物剂量发布的指南推荐，简要介绍了基于基因型的临床建议，并提供可下载的指南PDF文件。
@@ -73,28 +77,33 @@
               <tr>
                 <th width="16%">药物中文<br>药物英文</th>
                 <th width="16%">
-                  CPIC
+
+                  <span style="font-family:Times new roman,Times roman;">CPIC</span>
                   <br>
-                  n={{tableData.cpicNum}}</th>
-                <th width="16%">
-                  DPWG
-                  <br>
-                  n={{tableData.dpwgNum}}
+                  <span style="font-family:Times new roman,Times roman;">n=</span>
+                  {{tableData.cpicNum}}
                 </th>
                 <th width="16%">
-                  CPNDS
+                  <span style="font-family:Times new roman,Times roman;">DPWG</span>
                   <br>
-                  n={{tableData.cpndsNum}}
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.dpwgNum}}
+                </th>
+                <th width="16%">
+                  <span style="font-family:Times new roman,Times roman;">CPNDS</span>
+
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.cpndsNum}}
                 </th>
                 <th width="16%">
                   专家共识
                   <br>
-                  n={{tableData.expertNum}}
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.expertNum}}
                 </th>
                 <th width="16%">
-                  Other
+
+                  <span style="font-family:Times new roman,Times roman;">Other</span>
                   <br>
-                  n={{tableData.otherNum}}
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.otherNum}}
                 </th>
               </tr>
             </thead>
@@ -108,7 +117,7 @@
                     style="currsor:pointer;"
                     @click="toSearchContent('',list.name,'drug','0',true)"
                   >{{list.name}}</p>
-                  <p style="color:#999;">{{list.englishName}}</p>
+                  <p style="color:#999;font-family:Times new roman,Times roman;">{{list.englishName}}</p>
                 </td>
                 <td>
                   <p
@@ -120,6 +129,7 @@
                     <el-tag
                       color="#c36"
                       class="el-tag"
+                      style="font-family:Times new roman,Times roman;"
                     >
                       <i class="el-icon-document"></i>
                       {{item['geneName']}}

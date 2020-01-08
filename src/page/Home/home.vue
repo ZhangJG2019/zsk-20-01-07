@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <!-- style="font-family:Times new roman,Times roman;" -->
     <YHeaders></YHeaders>
     <div
       class="searchBox"
@@ -42,7 +43,7 @@
           </span>
           <span>
             <a @click="handleIconClick2('CYP2C19')">
-              <strong>CYP2C19</strong>
+              <strong style="font-family:Times new roman,Times roman;">CYP2C19</strong>
             </a>
           </span>
           <span>
@@ -77,6 +78,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/home-gene.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px;" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Genes</a>
@@ -99,6 +101,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/home-drug.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Drugs</a>
@@ -121,6 +124,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/drug-gene.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Drugs-Genes</a>
@@ -143,6 +147,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/linchuangzhinan.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Clinical Guidelines</a>
@@ -168,6 +173,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/drug-title.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Drug Labels</a>
@@ -191,6 +197,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/linchuangzhushi.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Clinical Annotations</a>
@@ -213,6 +220,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/linchuangshiyan.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Clinical Trial</a>
@@ -235,6 +243,7 @@
           <div style="width:60px;height:60px;float:left;margin: 20px; border-radius: 50%;  background-image: url(/static/images/newimg/home-partents.png);background-repeat:no-repeat;background-size:60%;background-position:center center;background-color:#e7eff2;"></div>
           <!-- style="width:50px;height:50px" -->
           <a
+            style="font-family:Times new roman,Times roman;"
             href
             class="ENGtitle"
           >Patents</a>
@@ -490,7 +499,7 @@ export default {
         // console.log(res)
         // console.log(res.data)
         let a = JSON.parse(res.data)
-        // console.log(a)
+        console.log(a)
         for (let i in a) {
           // console.log(i)
           if (i === 'patent') {
@@ -808,7 +817,7 @@ export default {
 .hotMsg strong,
 .hotMsg span {
   color: #fff;
-  font-style: 14px;
+  font-size: 14px;
   margin-right: 10px;
 }
 .clearfix:after {

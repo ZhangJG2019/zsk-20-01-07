@@ -8,7 +8,11 @@
       <div slot="banner-text">
         <h4 class="box-title">
           <i class="drugs-icon"></i>
-          <span class="text">药物(Drugs)</span>
+          <p
+            class="text"
+            style="display:inline-block;line-height: 80px; padding:0;   text-indent: 0.8em;"
+          >药物(<span style="font-family:Times new roman,Times roman;"> Drugs </span>)</p>
+          <!-- <span class="text">药物(Drugs)</span> -->
         </h4>
         <p class="text">知识库收录的是与基因相关的药物，并提供与药物相关的药物-基因信息以及所属科室，所属药物分类。</p>
         <p class="text">更多详情请查看具体药物。</p>
@@ -60,7 +64,7 @@
               @click="toSearchContent('',item.name,'drug')"
             >
               {{item.name}}
-              <em style="color:#888; padding-left:10px;">({{item.englishName}})</em>
+              <em style="color:#888; padding-left:10px; font-family:Times new roman,Times roman;">({{item.englishName}})</em>
             </p>
             <label-show titleName="相关项目名称">
               <div class="clearfix">

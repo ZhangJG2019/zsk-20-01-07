@@ -8,7 +8,11 @@
       <div slot="banner-text">
         <h4 class="box-title">
           <i class="drugs-genes-icon"></i>
-          <span class="text">药物-基因(Drugs-Genes)</span>
+          <p
+            class="text"
+            style="display:inline-block;line-height: 80px; padding:0;   text-indent: 0.8em;"
+          >药物-基因(<span style="font-family:Times new roman,Times roman;"> Drugs-Genes </span>)</p>
+          <!-- <span class="text">药物-基因(Drugs-Genes)</span> -->
         </h4>
         <p class="text">药物-基因通过汇总国内外指南，国内外药物标签，国内外临床试验，国内外专利，临床注释（基因），临床注释（位点），通路的信息，提供快速便捷检索的方式。</p>
         <p class="text">药物-基因的更多详情请查看全球临床指南，中国专家共识，全球药物标签，中国药物标签，中国临床试验等标签。</p>
@@ -16,7 +20,10 @@
       <div slot="filter-box">
         <p class="fr">共{{listAllNum}}条药物-基因记录，当前显示{{(pageNum*pageSize-9)+"-"+pageNum*pageSize}}条</p>
         <div class="fl">
-          <el-select v-model="filterSValue" placeholder="请选择">
+          <el-select
+            v-model="filterSValue"
+            placeholder="请选择"
+          >
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -24,13 +31,26 @@
               :value="item.value"
             ></el-option>
           </el-select>
-          <el-button class="filter-button" @click="getPageData()">筛选</el-button>
+          <el-button
+            class="filter-button"
+            @click="getPageData()"
+          >筛选</el-button>
         </div>
       </div>
       <div class="content-box">
-        <p v-if="!tableData.length&&!loading" style="text-align:center; padding-top:20px;">暂无数据</p>
-        <ul v-loading="loading" style="min-height:150px;">
-          <li class="content-list" v-for="(item,index) of tableData" :key="'pair+'+index">
+        <p
+          v-if="!tableData.length&&!loading"
+          style="text-align:center; padding-top:20px;"
+        >暂无数据</p>
+        <ul
+          v-loading="loading"
+          style="min-height:150px;"
+        >
+          <li
+            class="content-list"
+            v-for="(item,index) of tableData"
+            :key="'pair+'+index"
+          >
             <span class="list-icon"></span>
             <p style="color:#999;">药物-基因</p>
             <p
@@ -38,7 +58,7 @@
               @click="toSearchContent(item.id,item.name,'project','0',true)"
             >
               {{item.name}}
-              <em style="color:#888; padding-left:10px;">({{item.englishName}})</em>
+              <em style="color:#888; padding-left:10px; font-family:Times new roman,Times roman;">({{item.englishName}})</em>
             </p>
 
             <div class="show-box bor-bot clearfix">
@@ -121,14 +141,14 @@
   </div>
 </template>
 <script>
-import YHeader from "/common/header";
-import YFooter from "/common/footer";
-import LabelPage from "@/components/label-page.vue";
-import { getDrugGeneSortLable } from "@/api/labels_api.js";
-import styleConfig, { splitLabel } from "@/utils/style_config.js";
+import YHeader from '/common/header'
+import YFooter from '/common/footer'
+import LabelPage from '@/components/label-page.vue'
+import { getDrugGeneSortLable } from '@/api/labels_api.js'
+import styleConfig, { splitLabel } from '@/utils/style_config.js'
 
 export default {
-  name: "drugGenePair",
+  name: 'drugGenePair',
   // 生命周期函数
 
   components: {
@@ -143,37 +163,37 @@ export default {
       searchField: null,
       searchString: null,
       searchOper: null,
-      filterValue: "",
-      filterSValue: "",
+      filterValue: '',
+      filterSValue: '',
       pageSize: 10,
       pageNum: 1,
       listAllNum: 0,
       tableData: [],
       loading: false
-    };
+    }
   },
   created() {
-    this.getListDatas();
+    this.getListDatas()
   },
   mounted() {},
   methods: {
     pageChange(v) {
-      if (v == this.pageNum) return;
-      this.pageNum = v;
-      this.getListDatas();
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      if (v == this.pageNum) return
+      this.pageNum = v
+      this.getListDatas()
+      document.body.scrollTop = document.documentElement.scrollTop = 0
     },
     getPageData() {
-      this.pageNum = 1;
-      this.search = true;
+      this.pageNum = 1
+      this.search = true
       this.searchField = splitLabel(this.filterSValue)
         ? splitLabel(this.filterSValue)[0]
-        : null;
-      this.searchOper = "link";
+        : null
+      this.searchOper = 'link'
       this.searchString = splitLabel(this.filterSValue)
         ? splitLabel(this.filterSValue)[1]
-        : null;
-      this.getListDatas();
+        : null
+      this.getListDatas()
     },
     getListDatas() {
       var params = {
@@ -183,46 +203,46 @@ export default {
         searchOper: this.searchOper,
         rows: this.pageSize,
         page: this.pageNum
-      };
-      this.tableData = [];
-      this.loading = true;
+      }
+      this.tableData = []
+      this.loading = true
       getDrugGeneSortLable(params)
         .then(res => {
-          this.loading = false;
-          this.tableData = res.list || [];
-          this.listAllNum = res.total;
+          this.loading = false
+          this.tableData = res.list || []
+          this.listAllNum = res.total
         })
         .catch(err => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     },
     toSearchContent(geneId, name, type, str, num) {
       // console.log(num);
-      if (!num) return;
-      if (geneId !== "") {
+      if (!num) return
+      if (geneId !== '') {
         var routeData = this.$router.resolve({
-          path: "/searchContent",
+          path: '/searchContent',
           query: {
             key: name,
             projectId: geneId,
             type: type,
             tabs: str
           }
-        });
-      } else if (geneId === "") {
+        })
+      } else if (geneId === '') {
         var routeData = this.$router.resolve({
-          path: "/searchContent",
+          path: '/searchContent',
           query: {
             key: name,
             type: type,
             tabs: str
           }
-        });
+        })
       }
-      window.open(routeData.href, "_blank");
+      window.open(routeData.href, '_blank')
     }
   }
-};
+}
 </script>
 <style  lang="scss" >
 .table {
@@ -272,8 +292,8 @@ export default {
         text-align: center;
         padding-top: 9px;
         &::after {
-          content: "";
-          background: url("../../public/images/drugs-genes-icon2.png") no-repeat;
+          content: '';
+          background: url('../../public/images/drugs-genes-icon2.png') no-repeat;
           background-size: contain;
           width: 34px;
           height: 40px;
