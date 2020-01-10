@@ -13,7 +13,10 @@
     </div>
     <div style="border-top:1px solid #eee;">
       <div class="w clearfix d-flex">
-        <div class="left-box" v-if="this.tabs.length>1">
+        <div
+          class="left-box"
+          v-if="this.tabs.length>1"
+        >
           <b style="font-size:16px; color:#333;">题目</b>
           <ul class="tips-list">
             <li
@@ -33,26 +36,33 @@
         <div class="right-content-box">
           <p class="detail-tab">
             <el-button class="tabcur">注释查看</el-button>
-            <el-button class="tabdefault" @click="topageURL">原文查看</el-button>
+            <el-button
+              class="tabdefault"
+              @click="topageURL"
+            >原文查看</el-button>
           </p>
           <div class="china-box">
             <div class="detail-box-top">
               <h3 class="page-title-name">{{dataObj.registerTitle}}</h3>
               <div class="table">
-                <table
-                  style="border:1px solid #ccc;width:100%;height:100%;border-spacing: 0;border-bottom:none;"
-                >
+                <table style="border:1px solid #ccc;width:100%;height:100%;border-spacing: 0;border-bottom:none;">
                   <tr>
                     <td class="td_left">药物:</td>
                     <td class="td_right">{{dataObj.drug}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">基因:</td>
-                    <td class="td_right">{{dataObj.genes}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.genes}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">登记号:</td>
-                    <td class="td_right">{{dataObj.registerNumber}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.registerNumber}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">药物名称:</td>
@@ -92,71 +102,69 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import "element-ui";
-import axios from "axios";
-import { setStore, getStore } from "@/utils/storage.js";
+import Vue from 'vue'
+import 'element-ui'
+import axios from 'axios'
+import { setStore, getStore } from '@/utils/storage.js'
 import {
   getLiteTrailDomesticVODetailInfo,
   getLiteTrailForeignVODetailInfo
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 export default {
-  name: "clinicalTestForeignDetail",
+  name: 'clinicalTestForeignDetail',
   // 生命周期函数
   data() {
     return {
-      tabsCur: "12",
+      tabsCur: '12',
       tabs: [],
       queryObj: {},
       dataObj: {},
-      liteName: ""
-    };
+      liteName: ''
+    }
   },
   created() {
     this.queryObj =
-      Object.keys(this.$route.query).length > 0 ? this.$route.query : {};
-    this.tabsCur = this.queryObj.literId;
-    this.tabs = JSON.parse(getStore("clinical_trials")) || [];
-    
-    this.liteName = this.tabs[0].literName;
+      Object.keys(this.$route.query).length > 0 ? this.$route.query : {}
+    this.tabsCur = this.queryObj.literId
+    this.tabs = JSON.parse(getStore('clinical_trials')) || []
+
+    this.liteName = this.tabs[0].literName
   },
   mounted() {
-    this.queryData();
+    this.queryData()
   },
   methods: {
     tabsliClick(obj, index) {
-      if (this.tabsCur == obj.id) return;
-      this.tabsCur = obj.literId;
-      this.liteName = obj.literName;
-      
+      if (this.tabsCur == obj.id) return
+      this.tabsCur = obj.literId
+      this.liteName = obj.literName
+
       this.$nextTick(function() {
-        this.queryData();
-      });
+        this.queryData()
+      })
     },
     queryData() {
-      
-      let type = this.queryObj.type;
+      let type = this.queryObj.type
       let queryDetailData =
-        type == "1"
+        type == '1'
           ? getLiteTrailDomesticVODetailInfo
-          : getLiteTrailForeignVODetailInfo;
+          : getLiteTrailForeignVODetailInfo
       queryDetailData({ literId: this.tabsCur }).then(res => {
-        
-        this.dataObj = res;
-      });
+        this.dataObj = res
+      })
     },
     topageURL() {
       if (this.dataObj.fileUrl == null) {
         this.$message({
-          message: "网站暂时无这篇原文可查看~",
-          type: "warning"
-        });
-        return;
+          message: '网站暂时无这篇原文可查看~',
+          type: 'warning'
+        })
+        return
       }
-      window.open(this.dataObj.fileUrl, "_blank");
+      window.open(this.dataObj.fileUrl, '_blank')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -263,7 +271,7 @@ export default {
           font-size: 14px;
           line-height: 30px;
           &::before {
-            content: "";
+            content: '';
             display: inline-block;
             width: 5px;
             height: 5px;

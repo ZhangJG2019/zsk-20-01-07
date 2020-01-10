@@ -1,21 +1,42 @@
 <template>
   <div class="hook-box">
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="中国临床试验" name="first">
+    <el-tabs
+      v-model="activeName"
+      @tab-click="handleClick"
+    >
+      <el-tab-pane
+        label="中国临床试验"
+        name="first"
+      >
         <h6 style="margin-top:10px; font-size:20px; color:#333;">概述</h6>
         <div class="text-box">
           临床试验注释是由中国临床试验注册中心收录的有关基因多态性对药物，表型影响的试验数据，提供试验药物的作用、不良反应，或者是试验药物的吸收、分布、代谢和排泄等数据。
           更多中国临床试验详情内容请查看题目。
         </div>
         <div class="table">
-          <el-table border style="width: 100%" :data="china_clinical_trials">
-            <el-table-column label="药物" width="150" align="center">
+          <el-table
+            border
+            style="width: 100%"
+            :data="china_clinical_trials"
+          >
+            <el-table-column
+              label="药物"
+              width="150"
+              align="center"
+            >
               <template slot-scope="scope">
                 <p>{{scope.row.drugName}}</p>
-                <p>（{{scope.row.englishName}}）</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.englishName}}）</p>
               </template>
             </el-table-column>
-            <el-table-column prop="geneName" width="100" label="基因" align="center">
+            <el-table-column
+              width="100"
+              label="基因"
+              align="center"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -24,7 +45,14 @@
                 >{{list.geneName}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="registerNumber" width="130" label="登记号" align="center">
+            <el-table-column
+              width="130"
+              label="登记号"
+              align="center"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -33,7 +61,11 @@
                 >{{list.registerNumber}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="literName" align="center" label="题目">
+            <el-table-column
+              prop="literName"
+              align="center"
+              label="题目"
+            >
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text href-text"
@@ -49,7 +81,12 @@
                 >{{scope.row.literName}}</p>
               </template>
             </el-table-column>
-            <el-table-column prop="indication" align="center" width="120" label="适应症">
+            <el-table-column
+              prop="indication"
+              align="center"
+              width="120"
+              label="适应症"
+            >
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -58,7 +95,12 @@
                 >{{list.indication}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="registerTime" width="100" align="center" label="登记时间">
+            <el-table-column
+              prop="registerTime"
+              width="100"
+              align="center"
+              label="登记时间"
+            >
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -70,21 +112,39 @@
           </el-table>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="全球临床试验" name="second">
+      <el-tab-pane
+        label="全球临床试验"
+        name="second"
+      >
         <h6 style="margin-top:10px; font-size:20px; color:#333;">概述</h6>
         <div class="text-box">
           临床试验注释是由美国临床试验网站收录的有关基因多态性对药物，表型影响的试验数据，提供试验药物的作用、不良反应，或者是试验药物的吸收、分布、代谢和排泄等数据。
           更多全球临床试验详情内容请查看题目。
         </div>
         <div class="table">
-          <el-table border style="width: 100%" :data="foreign_clinical_trials">
-            <el-table-column label="药物" width="150" align="center">
+          <el-table
+            border
+            style="width: 100%"
+            :data="foreign_clinical_trials"
+          >
+            <el-table-column
+              label="药物"
+              width="150"
+              align="center"
+            >
               <template slot-scope="scope">
                 <p>{{scope.row.drugName}}</p>
-                <p>（{{scope.row.englishName}}）</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.englishName}}）</p>
               </template>
             </el-table-column>
-            <el-table-column prop="geneName" label="基因" width="100" align="center">
+            <el-table-column
+              label="基因"
+              width="100"
+              align="center"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -93,7 +153,11 @@
                 >{{list.geneName}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="experimentTitle" align="center" label="试验题目">
+            <el-table-column
+              prop="experimentTitle"
+              align="center"
+              label="试验题目"
+            >
               <template slot-scope="scope">
                 <!-- <p
                   class="ellipsis td-li-text href-text"
@@ -102,12 +166,18 @@
                   @click="toDetailPage(list)"
                 >{{list.literName}}</p>-->
                 <p
-                  style="color:#398dbc;cursor: pointer;"
+                  style="color:#398dbc;cursor: pointer;font-family:Times new roman,Times roman;"
                   @click="toDetailPage(scope.row)"
                 >{{scope.row.literName}}</p>
               </template>
             </el-table-column>
-            <el-table-column prop="diseases" label="疾病" align="center">
+            <el-table-column
+              label="疾病"
+              align="center"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.diseases}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -116,7 +186,13 @@
                 >{{list.diseases}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="intervene" align="center" label="干预">
+            <el-table-column
+              align="center"
+              label="干预"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.intervene}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -125,7 +201,12 @@
                 >{{list.intervene}}</p>
               </template>-->
             </el-table-column>
-            <el-table-column prop="startTime" align="center" width="100" label="开始时间">
+            <el-table-column
+              prop="startTime"
+              align="center"
+              width="100"
+              label="开始时间"
+            >
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -145,79 +226,79 @@ import {
   getClinicalTrialInfoByProjectId,
   getClinicalTrialInfoByGeneId,
   getClinicalTrialInfoByDrugId
-} from "@/api/labels_api.js";
-import { setStore, getStore } from "@/utils/storage.js";
+} from '@/api/labels_api.js'
+import { setStore, getStore } from '@/utils/storage.js'
 export default {
-  name: "clinical_trials_hook",
+  name: 'clinical_trials_hook',
   data() {
     return {
-      activeName: "first",
-      china_clinical_trials: [], //中国临床实验
-      foreign_clinical_trials: [] //全球临床实验
-    };
+      activeName: 'first',
+      china_clinical_trials: [], // 中国临床实验
+      foreign_clinical_trials: [] // 全球临床实验
+    }
   },
-  props: ["queryData"],
+  props: ['queryData'],
   created() {
-    this.handleClick();
+    this.handleClick()
   },
   methods: {
     handleClick(tab, event) {
       let param = {
-        id: this.queryData.id || "",
-        name: this.queryData.key || ""
-      };
+        id: this.queryData.id || '',
+        name: this.queryData.key || ''
+      }
       //     let param = this.queryData.type === "gene"
       // ? {geneId:this.queryData.id||""}
       // : this.queryData.type === "project"
       // ? {projectId:this.queryData.id||""}
       // : {drugId:this.queryData.id||""};
       let queryData =
-        this.queryData.type === "gene"
+        this.queryData.type === 'gene'
           ? getClinicalTrialInfoByGeneId
-          : this.queryData.type === "project"
+          : this.queryData.type === 'project'
           ? getClinicalTrialInfoByProjectId
-          : getClinicalTrialInfoByDrugId;
+          : getClinicalTrialInfoByDrugId
       queryData(param)
         .then(res => {
           // console.log(res);
-          this.loading = false;
-          this.china_clinical_trials = res.domestic;
-          this.foreign_clinical_trials = res.foreign;
+          this.loading = false
+          this.china_clinical_trials = res.domestic
+          this.foreign_clinical_trials = res.foreign
         })
         .catch(err => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     },
     toDetailPage(obj) {
       // console.log(1212);
       // console.log(obj);
-      if (!obj || !obj.literId) return;
-      let id = obj.literId;
-      let routeData;
-      if (this.activeName === "first") {
+      if (!obj || !obj.literId) return
+      let id = obj.literId
+      let routeData
+      if (this.activeName === 'first') {
         routeData = this.$router.resolve({
-          path: "/c-t-c-detail",
+          path: '/c-t-c-detail',
           query: {
             literId: obj.literId,
-            type: this.activeName == "first" ? "1" : "2"
+            type: this.activeName == 'first' ? '1' : '2'
           }
-        });
+        })
       } else {
         routeData = this.$router.resolve({
-          path: "/c-t-f-detail",
+          path: '/c-t-f-detail',
           query: {
             literId: obj.literId,
-            type: this.activeName == "first" ? "1" : "2"
+            type: this.activeName == 'first' ? '1' : '2'
           }
-        });
+        })
       }
-      this.setPageData();
+      this.setPageData()
 
-      window.open(routeData.href, "_blank");
+      window.open(routeData.href, '_blank')
     },
     setPageData() {
-      let pageData = [];
-      if (this.activeName === "first") {
+      let pageData = []
+      if (this.activeName === 'first') {
         this.china_clinical_trials.forEach(res => {
           if (res !== null) {
             // var literatures = {};
@@ -226,10 +307,10 @@ export default {
               literName: res.literName,
               drugName: res.drugName,
               geneName: res.geneName
-            };
-            pageData.push(literatures);
+            }
+            pageData.push(literatures)
           }
-        });
+        })
         // setStore("clinical_trials", pageData);
       } else {
         this.foreign_clinical_trials.forEach(res => {
@@ -240,16 +321,16 @@ export default {
               drugName: res.drugName,
               literName: res.literName,
               geneName: res.geneName
-            };
-            pageData.push(literatures);
+            }
+            pageData.push(literatures)
           }
-        });
+        })
         // setStore("clinical_trials", pageData);
       }
-      setStore("clinical_trials", pageData);
+      setStore('clinical_trials', pageData)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .text-box {

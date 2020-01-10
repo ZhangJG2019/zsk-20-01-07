@@ -483,7 +483,7 @@ export default {
       tableLabelGG: '', // 表格动态标题
       tableLabelGA: '', // 表格动态标题
       tableLabelAA: '', // 表格动态标题
-      dataLen: 0 // 判断1000基因组图示有无数据，进而决定是否展示饼状图
+      dataLen: [] // 判断1000基因组图示有无数据，进而决定是否展示饼状图
     }
   },
   created() {
@@ -501,21 +501,24 @@ export default {
       }).then(res => {
         debugger
         this.dataLen = res
-        if (res !== [] || res !== null) {
-          if (
-            res[0].porKeyValueList !== [] ||
-            res[0].porKeyValueList !== undefined
-          ) {
-            this.tableLabelGG = res[0].porKeyValueList[0].porName
-            this.tableLabelGA = res[0].porKeyValueList[1].porName
-            this.tableLabelAA = res[0].porKeyValueList[2].porName
+        if (this.dataLen.length !== 0) {
+          if (res !== [] || res !== null || res !== undefined || res !== '') {
+            if (
+              res[0].porKeyValueList !== null ||
+              res[0].porKeyValueList !== [] ||
+              res[0].porKeyValueList !== undefined
+            ) {
+              this.tableLabelGG = res[0].porKeyValueList[0].porName
+              this.tableLabelGA = res[0].porKeyValueList[1].porName
+              this.tableLabelAA = res[0].porKeyValueList[2].porName
+            }
+            this.chinaData = res
+            // console.log(res);
+            Object.keys(res).forEach(r => {
+              // r是每个数组名称
+              this.filterTableData(res[r], r) // 将数据划分为7大类
+            })
           }
-          this.chinaData = res
-          // console.log(res);
-          Object.keys(res).forEach(r => {
-            // r是每个数组名称
-            this.filterTableData(res[r], r) // 将数据划分为7大类
-          })
         }
       })
     },
@@ -632,31 +635,32 @@ export default {
       }
     },
     toShowBox(str) {
-      if (this.tabCur == str) return
+      if (this.tabCur === str) return
       this.tabCur = str
-    },
-    drawChinaMap() {
-      let option = echartFun2.pie2(this.newArr_Genomes2)
-      debugger
-      this.chart = this.$echarts.init(
-        document.getElementById('Genomes'),
-        'macarons'
-      )
-      this.chart.setOption(option)
     }
-  },
-  updated() {
-    if (!this.chart) {
-      this.drawChinaMap()
-    }
-  },
-  beforeDestroy() {
-    if (!this.chart) {
-      return
-    }
-    this.chart.dispose()
-    this.chart = null
+    // ,
+    // drawChinaMap() {
+    //   let option = echartFun2.pie2(this.newArr_Genomes2)
+    //   // debugger
+    //   this.chart = this.$echarts.init(
+    //     document.getElementById('Genomes'),'macarons'
+    //   )
+    //   this.chart.setOption(option)
+    // }
   }
+  // ,
+  // updated() {
+  //   if (!this.chart) {
+  //     this.drawChinaMap()
+  //   }
+  // },
+  // beforeDestroy() {
+  //   if (!this.chart) {
+  //     return
+  //   }
+  //   this.chart.dispose()
+  //   this.chart = null
+  // }
 }
 </script>
 

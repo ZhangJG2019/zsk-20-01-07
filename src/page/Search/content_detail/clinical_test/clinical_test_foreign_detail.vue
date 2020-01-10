@@ -13,7 +13,10 @@
     </div>
     <div style="border-top:1px solid #eee;">
       <div class="w clearfix d-flex">
-        <div class="left-box" v-if="this.tabs.length>1">
+        <div
+          class="left-box"
+          v-if="this.tabs.length>1"
+        >
           <b style="font-size:16px; color:#333;">题目</b>
           <ul class="tips-list">
             <li
@@ -33,18 +36,22 @@
         <div class="right-content-box">
           <p class="detail-tab">
             <el-button class="tabcur">注释查看</el-button>
-            <el-button class="tabdefault" @click="topageURL">原文查看</el-button>
+            <el-button
+              class="tabdefault"
+              @click="topageURL"
+            >原文查看</el-button>
           </p>
           <div class="china-box">
             <div class="detail-box-top">
               <h3 class="page-title-name">{{dataObj.experimentTitle}}</h3>
               <div class="table">
-                <table
-                  style="border:1px solid #ccc;width:100%;height:100%;border-spacing: 0;border-bottom:none;"
-                >
+                <table style="border:1px solid #ccc;width:100%;height:100%;border-spacing: 0;border-bottom:none;">
                   <tr>
                     <td class="td_left">基因:</td>
-                    <td class="td_right">{{dataObj.genes}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.genes}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">药物:</td>
@@ -52,35 +59,59 @@
                   </tr>
                   <tr>
                     <td class="td_left">招募状态:</td>
-                    <td class="td_right">{{dataObj.recruitState}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.recruitState}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">疾病:</td>
-                    <td class="td_right">{{dataObj.diseases}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.diseases}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">干预:</td>
-                    <td class="td_right">{{dataObj.intervene}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.intervene}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">申办者:</td>
-                    <td class="td_right">{{dataObj.sponsor}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.sponsor}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">实验分期:</td>
-                    <td class="td_right">{{dataObj.experimentStages}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.experimentStages}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">样本大小:</td>
-                    <td class="td_right">{{dataObj.sampleSize}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.sampleSize}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">开始时间:</td>
-                    <td class="td_right">{{dataObj.startTime}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.startTime}}</td>
                   </tr>
                   <tr>
                     <td class="td_left">结束时间:</td>
-                    <td class="td_right">{{dataObj.endingTime}}</td>
+                    <td
+                      class="td_right"
+                      style="font-family:Times new roman,Times roman;"
+                    >{{dataObj.endingTime}}</td>
                   </tr>
                 </table>
               </div>
@@ -92,72 +123,72 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import "element-ui";
-import axios from "axios";
-import { setStore, getStore } from "@/utils/storage.js";
+import Vue from 'vue'
+import 'element-ui'
+import axios from 'axios'
+import { setStore, getStore } from '@/utils/storage.js'
 import {
   getLiteTrailDomesticVODetailInfo,
   getLiteTrailForeignVODetailInfo
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 export default {
-  name: "clinicalTestForeignDetail",
+  name: 'clinicalTestForeignDetail',
   // 生命周期函数
   data() {
     return {
-      tabsCur: "12",
+      tabsCur: '12',
       tabs: [],
       dataObj: {},
       queryObj: {},
-      liteName: ""
-    };
+      liteName: ''
+    }
   },
   created() {
     this.queryObj =
-      Object.keys(this.$route.query).length > 0 ? this.$route.query : {};
-    this.tabsCur = this.queryObj.literId;
-    this.tabs = JSON.parse(getStore("clinical_trials")) || [];
+      Object.keys(this.$route.query).length > 0 ? this.$route.query : {}
+    this.tabsCur = this.queryObj.literId
+    this.tabs = JSON.parse(getStore('clinical_trials')) || []
 
-    this.liteName = this.tabs[0].literName;
+    this.liteName = this.tabs[0].literName
   },
   mounted() {
-    this.queryData();
+    this.queryData()
   },
   methods: {
     tabsliClick(obj, index) {
       // console.log(4444);
       // console.log(obj);
 
-      if (this.tabsCur == obj.id) return;
-      this.tabsCur = obj.literId;
-      this.liteName = obj.literName;
+      if (this.tabsCur == obj.id) return
+      this.tabsCur = obj.literId
+      this.liteName = obj.literName
 
       this.$nextTick(function() {
-        this.queryData();
-      });
+        this.queryData()
+      })
     },
     queryData() {
-      let type = this.queryObj.type;
+      let type = this.queryObj.type
       let queryDetailData =
-        type == "1"
+        type == '1'
           ? getLiteTrailDomesticVODetailInfo
-          : getLiteTrailForeignVODetailInfo;
+          : getLiteTrailForeignVODetailInfo
       queryDetailData({ literId: this.tabsCur }).then(res => {
-        this.dataObj = res;
-      });
+        this.dataObj = res
+      })
     },
     topageURL() {
       if (this.dataObj.fileUrl == null) {
         this.$message({
-          message: "网站暂时无这篇原文可查看~",
-          type: "warning"
-        });
-        return;
+          message: '网站暂时无这篇原文可查看~',
+          type: 'warning'
+        })
+        return
       }
-      window.open(this.dataObj.fileUrl, "_blank");
+      window.open(this.dataObj.fileUrl, '_blank')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -264,7 +295,7 @@ export default {
           font-size: 14px;
           line-height: 30px;
           &::before {
-            content: "";
+            content: '';
             display: inline-block;
             width: 5px;
             height: 5px;

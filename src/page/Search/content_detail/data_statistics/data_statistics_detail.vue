@@ -1,6 +1,9 @@
 <template>
   <div class="data-statistics">
-    <div class="clearfix breadcrumb-nav" style="border-bottom:1px solid #eee;">
+    <div
+      class="clearfix breadcrumb-nav"
+      style="border-bottom:1px solid #eee;"
+    >
       <div class="w">
         <el-breadcrumb separator-class="el-icon-arrow-right">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
@@ -16,12 +19,20 @@
         <ul class="tips-list">
           <!-- v-for="(item, index) in tabs" -->
           <!-- :key="'tabs'+index" -->
-          <li class="list-box" :class="{'cur':tabsCur=='0'}" @click="tabsliClick('0')">
+          <li
+            class="list-box"
+            :class="{'cur':tabsCur=='0'}"
+            @click="tabsliClick('0')"
+          >
             <i class="el-icon-arrow-right icon-right"></i>
             <p class="ellipsis">{{this.tabs.genePorName}}--{{this.tabs.geneName}}</p>
             <p class="ellipsis">3GBio基因位点频率地理分布(中国)</p>
           </li>
-          <li class="list-box" :class="{'cur':tabsCur=='1'}" @click="tabsliClick('1')">
+          <li
+            class="list-box"
+            :class="{'cur':tabsCur=='1'}"
+            @click="tabsliClick('1')"
+          >
             <i class="el-icon-arrow-right icon-right"></i>
             <p class="ellipsis">{{this.tabs.genePorName}}--{{this.tabs.geneName}}</p>
             <p class="ellipsis">3GBio基因位点频率地理分布(世界)</p>
@@ -38,44 +49,44 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import ChinaMapBox from "./data_statistics_china";
-import WorldMapBox from "./data_statistics_world";
-import { setStore, getStore } from "@/utils/storage.js";
+import Vue from 'vue'
+import ChinaMapBox from './data_statistics_china'
+import WorldMapBox from './data_statistics_world'
+import { setStore, getStore } from '@/utils/storage.js'
 export default {
-  name: "data-statistics-detail",
+  name: 'data-statistics-detail',
 
   data() {
     return {
-      tabsCur: "",
-      queryObj: "",
-      tabIndex: "0",
+      tabsCur: '',
+      queryObj: '',
+      tabIndex: '0',
       componentVue: null
-    };
+    }
   },
   created() {
     this.queryObj =
-      Object.keys(this.$route.query).length > 0 ? this.$route.query : {};
-    this.tabs = JSON.parse(getStore("data_statistics_hook")) || [];
+      Object.keys(this.$route.query).length > 0 ? this.$route.query : {}
+    this.tabs = JSON.parse(getStore('data_statistics_hook')) || []
     // console.log(11111111111111111);
     // console.log(this.tabs);
   },
   watch: {
     tabsCur(v) {
-      this.componentVue = v == "0" ? ChinaMapBox : WorldMapBox;
+      this.componentVue = v == '0' ? ChinaMapBox : WorldMapBox
     }
   },
   mounted() {
-    this.tabsCur = this.queryObj.typemap; //判断返回的字符串是不是"0"
+    this.tabsCur = this.queryObj.typemap // 判断返回的字符串是不是"0"
   },
   methods: {
     tabsliClick(index) {
-      if (this.tabsCur == index) return;
-      this.tabsCur = index;
-      this.tabIndex = index;
+      if (this.tabsCur == index) return
+      this.tabsCur = index
+      this.tabIndex = index
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +108,7 @@ export default {
     &.gene-box {
       background: #eee;
       .icon-box {
-        background: url("../../../../public/images/home-drug.png") no-repeat;
+        background: url('../../../../public/images/home-drug.png') no-repeat;
         background-size: contain;
         width: 64px;
         height: 63px;
@@ -237,7 +248,7 @@ export default {
             top: 19px;
             font-size: 35px;
             color: #3c8cbf;
-            background: url("../../../../public/images/home-drug.png") no-repeat;
+            background: url('../../../../public/images/home-drug.png') no-repeat;
             background-size: contain;
             width: 55px;
             height: 55px;
@@ -268,6 +279,6 @@ export default {
 }
 </style>
 <style lang="scss">
-.data-statistics {
-}
+// .data-statistics {
+// }
 </style>

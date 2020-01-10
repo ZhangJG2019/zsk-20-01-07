@@ -634,7 +634,7 @@ export default {
 }
 .zhuce {
   border-left: none;
-  margin-left: -5px;
+  margin-left: -8px;
 }
 .title {
   color: #fff;

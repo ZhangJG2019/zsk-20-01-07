@@ -2,16 +2,22 @@
 <template>
   <div class="login v2">
     <div class="wrapper">
-      <div class="dialog dialog-shadow" style="display: table-cell; margin-top: -362px;">
+      <div
+        class="dialog dialog-shadow"
+        style="display: table-cell; margin-top: -362px;"
+      >
         <div class="registered">
           <img
             src="../../../static/images/insertLogo.png"
             alt
             style="margin:20px auto;display:table-cell;"
           />
-          <h3>精准用药知识库</h3>
-          <h4>Precise Medicine Knowledge Base</h4>
-          <div class="content_center" style="margin-top:40px;padding-bottom: 20px;">
+          <h3 style="font-family:SimSun;">精准用药知识库</h3>
+          <h4 style="font-family:Times new roman,Times roman;">Precise Medicine Knowledge Base</h4>
+          <div
+            class="content_center"
+            style="margin-top:40px;padding-bottom: 20px;"
+          >
             <el-form
               :model="ruleForm"
               status-icon
@@ -103,13 +109,16 @@
                 ></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button type="primary" @click="uppwd('ruleForm')">提交</el-button>
+                <el-button
+                  type="primary"
+                  @click="uppwd('ruleForm')"
+                >提交</el-button>
                 <el-button @click="resetForm('ruleForm')">重置</el-button>
               </el-form-item>
             </el-form>
             <el-divider style="padding:20px 0;">
               <a
-                style="background-color:#f0f0f0;padding:0;"
+                style="background-color:#f0f0f0;padding:0;font-family:SimSun;"
                 href="http://47.105.75.254:9100/cas?service=http://47.105.75.254:8080/jump"
               >直接登录</a>
               <!-- <a
@@ -129,140 +138,164 @@
           </div>
         </div>
       </div>
-      <div class="border" style="text-align:center;width: 100%;">
-        <p class="links" style="height:30px;">
-          <a target="_blank" href="http://www.3gbio.com.cn/html/about/intro/">
-            <span>关于公司</span>
+      <div
+        class="border"
+        style="text-align:center;width: 100%;"
+      >
+        <p
+          class="links"
+          style="height:30px;"
+        >
+          <a
+            target="_blank"
+            href="http://www.3gbio.com.cn/html/about/intro/"
+          >
+            <span style="font-family:SimSun;">关于公司</span>
           </a>
           <a href="####">
             <span>|</span>
           </a>
-          <a target="_blank" href="http://www.3gbio.com.cn/html/privacy/">
-            <span>隐私条款</span>
+          <a
+            target="_blank"
+            href="http://www.3gbio.com.cn/html/privacy/"
+          >
+            <span style="font-family:SimSun;">隐私条款</span>
           </a>
           <a href="####">
             <span>|</span>
           </a>
-          <a target="_blank" href="http://www.3gbio.com.cn/html/Legal-Notices/">
-            <span>法律声明</span>
+          <a
+            target="_blank"
+            href="http://www.3gbio.com.cn/html/Legal-Notices/"
+          >
+            <span style="font-family:SimSun;">法律声明</span>
           </a>
           <a href="####">
             <span>|</span>
           </a>
-          <a target="_blank" href="http://www.3gbio.com.cn/html/mail/">
-            <span>企业邮箱</span>
+          <a
+            target="_blank"
+            href="http://www.3gbio.com.cn/html/mail/"
+          >
+            <span style="font-family:SimSun;">企业邮箱</span>
           </a>
           <a href="####">
             <span>|</span>
           </a>
-          <a target="_blank" href="https://www.cnzz.com/stat/website.php?web_id=4698979">
-            <span>站长统计</span>
+          <a
+            target="_blank"
+            href="https://www.cnzz.com/stat/website.php?web_id=4698979"
+          >
+            <span style="font-family:SimSun;">站长统计</span>
           </a>
         </p>
         <el-divider></el-divider>
-        <p class="copyright" style="height:30px;">
+        <p
+          class="copyright"
+          style="height:30px;"
+        >
           <a
             target="_blank"
             href="http://www.miibeian.gov.cn/"
-            style="color:#8e8e8e;"
+            style="color:#8e8e8e;font-family:SimSun;"
           >湘ICP备18007563号-1</a>
-          <span style="color:#8e8e8e;">长沙三济生物科技有限公司 copyright 2012 © 版权所有</span>
+          <span style="color:#8e8e8e;font-family:SimSun;">长沙三济生物科技有限公司 copyright 2012 © 版权所有</span>
         </p>
       </div>
     </div>
   </div>
 </template>
 <script>
-import YFooter from "/common/footer";
-import YButton from "/components/YButton";
-import { resetpwd } from "/api/index.js";
-import "element-ui";
+import YFooter from '/common/footer'
+import YButton from '/components/YButton'
+import { resetpwd } from '/api/index.js'
+import 'element-ui'
 // import $ from 'jquery'
-import axios from "axios";
+import axios from 'axios'
 // import qs from 'qs'
 export default {
   data() {
     return {
       disabled: false,
       time: 0,
-      input: "",
-      btntxt: "重新发送",
+      input: '',
+      btntxt: '重新发送',
       // 注册页面字段
       ruleForm: {
-        mobile: "",
-        password2: "",
-        password: "",
-        verifyCode: ""
+        mobile: '',
+        password2: '',
+        password: '',
+        verifyCode: ''
       },
       // 校验规则
       loginFormRules: {
         password2: [
           {
             required: true,
-            message: "请输入密码",
-            trigger: "blur"
+            message: '请输入密码',
+            trigger: 'blur'
           }
         ],
         password: [
           {
             // validator: validatePass,
             required: true,
-            message: "请输入密码",
-            trigger: "blur"
+            message: '请输入密码',
+            trigger: 'blur'
           }
         ],
         verifyCode: [
-          { required: true, message: "请输入手机验证码", trigger: "blur" }
+          { required: true, message: '请输入手机验证码', trigger: 'blur' }
         ]
       },
-      formLabelWidth: "1px"
-    };
+      formLabelWidth: '1px'
+    }
   },
   methods: {
     // 手机验证发送验证码
     sendcode() {
-      const reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/;
-      var url = "/front/verifyCode/" + this.ruleForm.mobile;
-      if (this.ruleForm.mobile === "") {
+      const reg = 11 && /^((13|14|15|17|18)[0-9]{1}\d{8})$/
+      var url = '/front/verifyCode/' + this.ruleForm.mobile
+      if (this.ruleForm.mobile === '') {
         this.$message({
-          message: "手机号不能为空",
+          message: '手机号不能为空',
           center: true
-        });
-        return;
+        })
+        return
       } else if (!reg.test(this.ruleForm.mobile)) {
         this.$message({
-          message: "请输入正确的手机号",
+          message: '请输入正确的手机号',
           center: true
-        });
-        return;
+        })
+        return
       } else {
         axios({
-          method: "get",
+          method: 'get',
           url: url
         }).then(res => {
           // this.phonedata = res.data
           // console.log(res)
           this.$message({
-            message: "发送成功",
-            type: "success",
+            message: '发送成功',
+            type: 'success',
             center: true
-          });
-          this.time = 60;
-          this.disabled = true;
-          this.timer();
-        });
+          })
+          this.time = 60
+          this.disabled = true
+          this.timer()
+        })
       }
     },
     // 60S倒计时
     timer() {
       if (this.time > 0) {
-        this.time--;
-        this.btntxt = this.time + "s后重新获取";
-        setTimeout(this.timer, 1000);
+        this.time--
+        this.btntxt = this.time + 's后重新获取'
+        setTimeout(this.timer, 1000)
       } else {
-        this.time = 0;
-        this.btntxt = "获取验证码";
-        this.disabled = false;
+        this.time = 0
+        this.btntxt = '获取验证码'
+        this.disabled = false
       }
     },
     // 提交重置密码表单 1
@@ -270,72 +303,72 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           if (this.ruleForm.password2 === this.ruleForm.password) {
-            let data = new FormData();
-            data.append("password", this.ruleForm.password);
-            data.append("mobile", this.ruleForm.mobile);
-            data.append("verifyCode", this.ruleForm.verifyCode);
+            let data = new FormData()
+            data.append('password', this.ruleForm.password)
+            data.append('mobile', this.ruleForm.mobile)
+            data.append('verifyCode', this.ruleForm.verifyCode)
             resetpwd(data)
               .then(res => {
                 // console.log('RES=1' + res)
                 if (res.status === 2) {
                   this.$message({
                     message: res.message,
-                    type: "success"
-                  });
+                    type: 'success'
+                  })
                   return this.$router.push({
-                    path: "/login"
-                  });
+                    path: '/login'
+                  })
                 } else {
                   // console.log('RES=其他' + res)
-                  this.$message.error(res.message);
-                  this.ruleForm.verifyCode = "";
+                  this.$message.error(res.message)
+                  this.ruleForm.verifyCode = ''
                   return this.$router.push({
-                    path: "/register"
-                  });
+                    path: '/register'
+                  })
                 }
               })
               .catch(res => {
                 // console.log(222)
                 this.$message({
                   message: res.message,
-                  type: "error"
-                });
-              });
+                  type: 'error'
+                })
+              })
           } else {
             this.$message({
-              message: "两次输入的密码不相同!",
-              type: "error"
-            });
-            this.ruleForm.password2 = null;
-            return false;
+              message: '两次输入的密码不相同!',
+              type: 'error'
+            })
+            this.ruleForm.password2 = null
+            return false
           }
         } else {
           // console.log(333)
           this.$message({
-            message: "请补全信息",
-            type: "error"
-          });
-          return false;
+            message: '请补全信息',
+            type: 'error'
+          })
+          return false
         }
-      });
+      })
     },
     // 提交重置密码表单 2
     // 重置按钮
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.$refs[formName].resetFields()
     },
     // 跳转到登录页
     toLogin() {
       this.$router.push({
-        path: "/login"
-      });
+        path: '/login'
+      })
     }
   },
   components: {
     YFooter,
     YButton
   }
-};
+}
 </script>
 <style lang="scss" rel="stylesheet/scss" >
 // 底部footer样式（1）

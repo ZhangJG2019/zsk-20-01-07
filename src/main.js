@@ -15,102 +15,102 @@ import './assets/icon/font_zhuce/iconfont.css'
 import $ from 'jquery'
 import axios from 'axios'
 import {
-  setCookie,
-  getCookie,
-  delCookie
+    setCookie,
+    getCookie,
+    delCookie
 } from './assets/cookie'
 // 富文本编辑器
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts
 Vue.prototype.axios = axios
-// import {
-//   userInfo
-// } from './api'
+    // import {
+    //   userInfo
+    // } from './api'
 import {
-  Autocomplete,
-  Button,
-  Badge,
-  ButtonGroup,
-  Breadcrumb,
-  BreadcrumbItem,
-  Checkbox,
-  Col,
-  CheckboxGroup,
-  Card,
-  Dialog,
-  Divider,
-  DatePicker,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  Form,
-  FormItem,
-  Input,
-  Icon,
-  Loading,
-  Message,
-  Menu,
-  MessageBox,
-  Notification,
-  Option,
-  Pagination,
-  Row,
-  Steps,
-  Step,
-  Select,
-  Tabs,
-  Tooltip,
-  TabPane,
-  Table,
-  TableColumn,
-  Tag,
-  TimePicker,
-  Upload,
-  Carousel,
-  CarouselItem
+    Autocomplete,
+    Button,
+    Badge,
+    ButtonGroup,
+    Breadcrumb,
+    BreadcrumbItem,
+    Checkbox,
+    Col,
+    CheckboxGroup,
+    Card,
+    Dialog,
+    Divider,
+    DatePicker,
+    Dropdown,
+    DropdownMenu,
+    DropdownItem,
+    Form,
+    FormItem,
+    Input,
+    Icon,
+    Loading,
+    Message,
+    Menu,
+    MessageBox,
+    Notification,
+    Option,
+    Pagination,
+    Row,
+    Steps,
+    Step,
+    Select,
+    Tabs,
+    Tooltip,
+    TabPane,
+    Table,
+    TableColumn,
+    Tag,
+    TimePicker,
+    Upload,
+    Carousel,
+    CarouselItem
 
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import {
-  getStore
+    getStore
 } from '/utils/storage'
 import VueContentPlaceholders from 'vue-content-placeholders'
 
 const whiteList = ['/d-s-detail', '/drug-news', '/p-w-detail', '/path-ways', '/d-s-c-detail', '/d-s-w-detail', '/p-c-detail', '/p-f-detail', '/c-t-f-detail', '/c-t-c-detail', '/d-l-c-detail', '/d-l-f-detail', '/c-n-detail', '/c-n-g-detail', '/c-n-w-detail', '/clinicalGuidelinesDeatil', '/searchDrug', '/searchDruGenePair', '/searchContent', '/queryAllResult', '/authority', '/clinicalNotes', '/clinicalTrials', '/drugGenePair', '/drugLabels', '/patent', '/taskUser', '/help', '/download', '/taskhall', '/home', '/drug', '/gene', '/getajax', '/register', '/forgetpwd'] // 不需要登陆的页面
-//
-router.beforeEach(function (to, from, next) {
+    //
+router.beforeEach(function(to, from, next) {
   let userInfo = getStore('userInfo')
-  // if (whiteList.indexOf(to.path) !== -1) { // 白名单,如果在白名单中，就免登录
-  //   next()
-  // } else {
-  //   if (userInfo !== null || userInfo !== '') {
-  //     next({
-  //       path: '/taskall'
-  //     })
-  //   } else {
-  //     this.$message({
-  //       message: '请登录后查看',
-  //       type: 'error'
-  //     })
-  //     next({
-  //       path: '/'
-  //     })
-  //   }
-  // }
+        // if (whiteList.indexOf(to.path) !== -1) { // 白名单,如果在白名单中，就免登录
+        //   next()
+        // } else {
+        //   if (userInfo !== null || userInfo !== '') {
+        //     next({
+        //       path: '/taskall'
+        //     })
+        //   } else {
+        //     this.$message({
+        //       message: '请登录后查看',
+        //       type: 'error'
+        //     })
+        //     next({
+        //       path: '/'
+        //     })
+        //   }
+        // }
   if (whiteList.indexOf(to.path) !== -1) { // 白名单,如果在白名单中，就免登录
-    next()
-  } else {
-    if (userInfo !== null && userInfo !== '') {
-      next({
-        path: '/taskall'
-      })
+      next()
     } else {
-      // this.$message.error({
-      //   message: '请登录后查看',
-      //   type: 'error'
-      // })
+      if (userInfo !== null && userInfo !== '') {
+          next({
+              path: '/taskall'
+            })
+        } else {
+            // this.$message.error({
+            //   message: '请登录后查看',
+            //   type: 'error'
+            // })
+        }
     }
-  }
 })
 Vue.use(Autocomplete)
 Vue.use(Button)
@@ -154,8 +154,8 @@ Vue.use(VueResource)
 Vue.use(Upload)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
-// 给axios配置给Vue的$http成员
-// Vue.prototype.$http = axios
+    // 给axios配置给Vue的$http成员
+    // Vue.prototype.$http = axios
 
 Vue.prototype.$cookieStore = {
   setCookie,
@@ -165,20 +165,20 @@ Vue.prototype.$cookieStore = {
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
-Vue.prototype.$msgbox = MessageBox;
-Vue.prototype.$alert = MessageBox.alert;
-Vue.prototype.$confirm = MessageBox.confirm;
-Vue.prototype.$prompt = MessageBox.prompt;
+Vue.prototype.$msgbox = MessageBox
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
+Vue.prototype.$prompt = MessageBox.prompt
 Vue.use(VueLazyload, {
-  // preLoad: 1.3,
-  // error: 'dist/error.png',
+    // preLoad: 1.3,
+    // error: 'dist/error.png',
   loading: '/static/images/load.gif'
-  // attempt: 1
+        // attempt: 1
 })
 
 Vue.config.productionTip = false
-/* eslint-disable no-new */
-// console.log(router)
+    /* eslint-disable no-new */
+    // console.log(router)
 new Vue({
   el: '#app',
   store,

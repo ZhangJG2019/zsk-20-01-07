@@ -1,6 +1,9 @@
 <template>
   <div class="searchContent">
-    <div class="box-top-title" :class="[queryObj.type+'-box']">
+    <div
+      class="box-top-title"
+      :class="[queryObj.type+'-box']"
+    >
       <p class="w">
         <i class="icon-box"></i>
         {{queryObj.key}}
@@ -8,6 +11,7 @@
     </div>
     <div class="w clearfix d-flex">
       <div class="left-box">
+        <!-- 左侧总结 -->
         <ul class="tips-list">
           <li
             class="list-box"
@@ -20,64 +24,74 @@
             {{item.label}}
           </li>
         </ul>
-        <span class="tips-border" :style="{top:(tabIndex*40+35)+'px'}"></span>
+        <!-- 选中后，展示选中li -->
+        <span
+          class="tips-border"
+          :style="{top:(tabIndex*40+35)+'px'}"
+        ></span>
       </div>
       <div class="right-content-box">
         <keep-alive>
-          <component :is="componentVue" :queryData="queryObj"></component>
+          <component
+            :is="componentVue"
+            :queryData="queryObj"
+          ></component>
         </keep-alive>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { tabs } from "@/utils/style_config.js";
+import Vue from 'vue'
+import { tabs } from '@/utils/style_config.js'
 
 export default {
-  name: "searchContent",
+  name: 'searchContent',
   // 生命周期函数
   data() {
     return {
-      componentVue: "",
+      componentVue: '',
       tabs: tabs,
-      tabsCur: "",
-      tabIndex: "",
-      queryObj: ""
-    };
+      tabsCur: '',
+      tabIndex: '',
+      queryObj: ''
+    }
   },
   created() {
     this.queryObj =
-      Object.keys(this.$route.query).length > 0 ? this.$route.query : {};
-    let tabsIndex = this.queryObj.tabs ? this.queryObj.tabs : 0;
-    this.tabsliClick(this.tabs[tabsIndex], tabsIndex);
-    // console.log(this.tabs[tabsIndex], tabsIndex);
-    // console.log(111111111);
-    // console.log(this.queryObj);
+      Object.keys(this.$route.query).length > 0 ? this.$route.query : {}
+    let tabsIndex = this.queryObj.tabs ? this.queryObj.tabs : 0
+    this.tabsliClick(this.tabs[tabsIndex], tabsIndex)
+    // debugger
+    // console.log(111111111)
+    // console.log(this.tabs[tabsIndex]) // label: "总结"+value: "all_component"
+    // console.log(tabsIndex) // 0
+    // console.log(2222222222)
+    // console.log(this.queryObj) // key+id+type
   },
   components: {},
   methods: {
     tabsliClick(obj, index) {
-      if (this.tabIndex === index) return;
-      this.tabIndex = index;
-      this.tabsCur = obj.value;
+      if (this.tabIndex === index) return
+      this.tabIndex = index
+      this.tabsCur = obj.value
       // console.log(obj.value);
-      this.getComponentVue(obj.value);
+      this.getComponentVue(obj.value)
     },
     // 根据点击标签获取组件
     getComponentVue(str) {
-      let path = `component/${str}_hook.vue`;
-      var b = import(/* webpackChunkName: "[request]" */ "./" + path);
+      let path = `component/${str}_hook.vue`
+      var b = import(/* webpackChunkName: "[request]" */ './' + path)
 
-      Vue.component(str, () => b);
+      Vue.component(str, () => b)
       b.then(() => {
-        this.componentVue = str;
+        this.componentVue = str
       }).catch(err => {
-        this.componentVue = "";
-      });
+        this.componentVue = ''
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -95,7 +109,7 @@ export default {
     &.gene-box {
       background: #ff9a66;
       .icon-box {
-        background: url("../../public/images/jiyin-icon.png") no-repeat;
+        background: url('../../public/images/jiyin-icon.png') no-repeat;
         background-size: contain;
         width: 36px;
         height: 78px;
@@ -106,7 +120,7 @@ export default {
     &.drug-box {
       background: #9bc9a4;
       .icon-box {
-        background: url("../../public/images/drugs-icon.png") no-repeat;
+        background: url('../../public/images/drugs-icon.png') no-repeat;
         background-size: contain;
         width: 50px;
         height: 50px;
@@ -119,7 +133,7 @@ export default {
     &.project-box {
       background: #368ebe;
       .icon-box {
-        background: url("../../public/images/drugs-genes-icon.png") no-repeat;
+        background: url('../../public/images/drugs-genes-icon.png') no-repeat;
         background-size: contain;
         width: 59px;
         height: 70px;

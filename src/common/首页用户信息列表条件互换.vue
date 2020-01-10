@@ -78,22 +78,22 @@
   </div>
 </template>
 <script>
-import YButton from "/components/YButton";
-import { mapMutations, mapState } from "vuex";
+import YButton from '/components/YButton';
+import { mapMutations, mapState } from 'vuex';
 // import { getQuickSearch } from '/api/goods'
 // import { loginOut } from '/api/index'
-import { getQuickSearch } from "/api/index";
-import { setStore, getStore, removeStore } from "/utils/storage";
-import "element-ui/lib/theme-chalk/index.css";
-import { userInfo } from "/api/index.js";
-import axios from "axios";
+import { getQuickSearch } from '/api/index';
+import { setStore, getStore, removeStore } from '/utils/storage';
+import 'element-ui/lib/theme-chalk/index.css';
+import { userInfo } from '/api/index.js';
+import axios from 'axios';
 export default {
   data() {
     return {
       loginShow: false,
-      columnLinkUrl_notice: "", // 公告链接地址
-      columnLinkUrl_newContent: "", // 最新事件链接地址
-      userName: "",
+      columnLinkUrl_notice: '', // 公告链接地址
+      columnLinkUrl_newContent: '', // 最新事件链接地址
+      userName: '',
       user: {},
       // 查询数据库的商品
       st: false,
@@ -102,39 +102,39 @@ export default {
       positionL: 0,
       positionT: 0,
       timerCartShow: null, // 定时隐藏购物车
-      userinput: "",
+      userinput: '',
       choosePage: -1,
       searchResults: [],
       timeout: null,
-      token: ""
-    };
+      token: ''
+    }
   },
   computed: {
-    ...mapState(["cartList", "login", "receiveInCart", "showCart", "userInfo"]),
+    ...mapState(['cartList', 'login', 'receiveInCart', 'showCart', 'userInfo']),
     count() {
-      return this.$store.state.login;
+      return this.$store.state.login
     }
   },
   created() {
-    this.getTopNews();
-    this.getNewContent();
-    this.getNotice();
-    this.getname();
+    this.getTopNews()
+    this.getNewContent()
+    this.getNotice()
+    this.getname()
   },
   methods: {
     // 修改菜单显隐
     showdiv(e) {
-      if ($(e).css("display") === "none") {
+      if ($(e).css('display') === 'none') {
         // 如果show是隐藏的
-        $(e).css("display", "block"); // show的display属性设置为block（显示）
+        $(e).css('display', 'block') // show的display属性设置为block（显示）
       } else {
         // 如果show是显示的
-        $(e).css("display", "none"); // show的display属性设置为none（隐藏）
+        $(e).css('display', 'none') // show的display属性设置为none（隐藏）
       }
     },
     top_menu() {
-      let gg = ".gg";
-      this.showdiv(gg);
+      let gg = '.gg';
+      this.showdiv(gg)
     },
     // 获取用户信息
     getname() {
@@ -143,206 +143,206 @@ export default {
           res !== [] ||
           res !== {} ||
           res !== null ||
-          res !== "" ||
+          res !== '' ||
           res !== undefined
         ) {
-          let menuCode = new Set();
+          let menuCode = new Set()
           if (
-            res.data.user !== "" &&
+            res.data.user !== '' &&
             res.data.user !== null &&
             res.data.user !== undefined
           ) {
-            let user = res.data.user;
-            this.userName = user.username;
-            this.loginShow = true;
-            let role = user.roleVo;
+            let user = res.data.user
+            this.userName = user.username
+            this.loginShow = true
+            let role = user.roleVo
             if (role !== null) {
               role.permissionVoList.map(item =>
                 item.menuList.map(it => menuCode.add(it.code))
-              );
+              )
             }
-            user.roleVo = menuCode;
-            setStore("userInfo", user);
+            user.roleVo = menuCode
+            setStore('userInfo', user)
           } else {
             this.$message({
-              message: "用户信息未获取到",
-              type: "error"
-            });
+              message: '用户信息未获取到',
+              type: 'error'
+            })
           }
         }
-      });
+      })
     },
     // 最新事件
     getTopNews() {
-      var topNew = "最新事件";
-      var url = "/apis/cms/api/getColumnNewList?title=" + topNew;
-      axios.defaults.withCredentials = true;
-      axios.defaults.headers.common["Authentication-Token"] =
-        window.localStorage.token;
+      var topNew = '最新事件';
+      var url = '/apis/cms/api/getColumnNewList?title=' + topNew
+      axios.defaults.withCredentials = true
+      axios.defaults.headers.common['Authentication-Token'] =
+        window.localStorage.token
       axios({
-        method: "get",
+        method: 'get',
         url: url,
         withCredentials: true
       }).then(res => {
         // console.log(res)
         // console.log(res.data[0].columnLinkUrl)
         // 把获得好的最新事件 赋予topNews 给成员
-        this.topNews = res.data;
+        this.topNews = res.data
         if (this.topNews.length > 0) {
-          this.columnLinkUrl = res.data[0].columnLinkUrl;
-          let url = this.columnLinkUrl.split("/html/");
-          let s = url[1];
-          let u = s.split("/");
-          let a = u[0];
-          if (a === "") {
-            a = u[1];
+          this.columnLinkUrl = res.data[0].columnLinkUrl
+          let url = this.columnLinkUrl.split('/html/')
+          let s = url[1]
+          let u = s.split('/')
+          let a = u[0]
+          if (a === '') {
+            a = u[1]
           }
-          this.columnLinkUrl = url[0] + "/html/" + a + "/index.html";
+          this.columnLinkUrl = url[0] + '/html/' + a + '/index.html';
         }
-      });
+      })
     },
     // 最新研究
     getNewContent() {
-      var newContent = "最新研究";
-      axios.defaults.withCredentials = true;
-      var url = "/apis/cms/api/getColumnNewList?title=" + newContent;
+      var newContent = '最新研究';
+      axios.defaults.withCredentials = true
+      var url = '/apis/cms/api/getColumnNewList?title=' + newContent
       // var url = 'static/data/home_newContent.json'
       axios({
-        method: "get",
+        method: 'get',
         url: url
       }).then(res => {
         // 把获得好的最新研究内容 赋予 给NewContent成员
-        this.newContent = res.data;
+        this.newContent = res.data
         if (this.newContent.length > 0) {
-          this.columnLinkUrl_newContent = res.data[0].columnLinkUrl;
-          let url = this.columnLinkUrl_newContent.split("/html/");
-          let s = url[1];
-          let u = s.split("/");
-          let a = u[0];
-          if (a === "") {
-            a = u[1];
+          this.columnLinkUrl_newContent = res.data[0].columnLinkUrl
+          let url = this.columnLinkUrl_newContent.split('/html/')
+          let s = url[1]
+          let u = s.split('/')
+          let a = u[0]
+          if (a === '') {
+            a = u[1]
           }
-          this.columnLinkUrl_newContent = url[0] + "/html/" + a + "/index.html";
+          this.columnLinkUrl_newContent = url[0] + '/html/' + a + '/index.html';
         }
-      });
+      })
     },
     // 公告
     getNotice() {
-      var gonggao = "公告通知";
-      axios.defaults.withCredentials = true;
-      var url = "/apis/cms/api/getColumnNewList?title=" + gonggao;
+      var gonggao = '公告通知';
+      axios.defaults.withCredentials = true
+      var url = '/apis/cms/api/getColumnNewList?title=' + gonggao
       axios({
-        method: "get",
+        method: 'get',
         url: url
       }).then(res => {
         // 把获得好的公告 赋予 给notice成员
-        this.notice = res.data;
+        this.notice = res.data
         if (this.notice.length > 0) {
-          this.columnLinkUrl_notice = res.data[0].columnLinkUrl;
-          let url = this.columnLinkUrl_notice.split("/html/");
-          let s = url[1];
-          let u = s.split("/");
-          let a = u[0];
-          if (a === "") {
-            a = u[1];
+          this.columnLinkUrl_notice = res.data[0].columnLinkUrl
+          let url = this.columnLinkUrl_notice.split('/html/')
+          let s = url[1]
+          let u = s.split('/')
+          let a = u[0]
+          if (a === '') {
+            a = u[1]
           }
-          this.columnLinkUrl_notice = url[0] + "/html/" + a + "/index.html";
+          this.columnLinkUrl_notice = url[0] + '/html/' + a + '/index.html';
         }
-      });
+      })
     },
     // cms页面跳转
     See(e) {
-      window.open(e, "_blank");
+      window.open(e, '_blank')
     },
 
     // 任务大厅栏目条转
     tanchaung() {
-      let userInfo = getStore("userInfo");
+      let userInfo = getStore('userInfo')
       // if (userInfo !== null && userInfo !== '') {
       // if (userInfo !== undefined) {
-      if (userInfo === undefined || (userInfo !== null || userInfo !== "")) {
+      if (userInfo === undefined || (userInfo !== null || userInfo !== '')) {
         // window.location.href = 'http://47.105.75.254/#/taskhall'
-        let routeData = this.$router.resolve({ path: "/taskhall" });
-        window.open(routeData.href, "_blank");
+        let routeData = this.$router.resolve({ path: '/taskhall' })
+        window.open(routeData.href, '_blank')
         // window.open('http://localhost:1111/#/taskhall')
         //  path: '/taskall'
       } else {
         this.$message({
-          message: "请登录后查看",
-          type: "warning"
-        });
+          message: '请登录后查看',
+          type: 'warning'
+        })
       }
     },
     // 知识库用户跳转
     zskyonghu() {
-      let routeData = this.$router.resolve({ path: "/taskUser" });
-      window.open(routeData.href, "_blank");
+      let routeData = this.$router.resolve({ path: '/taskUser' })
+      window.open(routeData.href, '_blank')
     },
     // 下载跳转
     xiazai() {
-      let routeData = this.$router.resolve({ path: "/download" });
-      window.open(routeData.href, "_blank");
+      let routeData = this.$router.resolve({ path: '/download' })
+      window.open(routeData.href, '_blank')
     },
     // 帮助跳转
     bangzhu() {
-      let routeData = this.$router.resolve({ path: "/help" });
-      window.open(routeData.href, "_blank");
+      let routeData = this.$router.resolve({ path: '/help' })
+      window.open(routeData.href, '_blank')
     },
     ...mapMutations([
-      "ADD_CART",
-      "INIT_BUYCART",
-      "ADD_ANIMATION",
-      "SHOW_CART",
-      "REDUCE_CART",
-      "RECORD_USERINFO",
-      "EDIT_CART"
+      'ADD_CART',
+      'INIT_BUYCART',
+      'ADD_ANIMATION',
+      'SHOW_CART',
+      'REDUCE_CART',
+      'RECORD_USERINFO',
+      'EDIT_CART'
     ]),
     // 查询信息
     handleIconClick(ev) {
-      if (this.$route.path === "/queryAllResult") {
+      if (this.$route.path === '/queryAllResult') {
         this.$router.push({
-          path: "/queryAllResult",
+          path: '/queryAllResult',
           query: {
             key: this.userinput
           }
-        });
-        this.$emit("sousuo", this.userinput);
+        })
+        this.$emit('sousuo', this.userinput)
       } else {
         this.$router.push({
-          path: "/queryAllResult",
+          path: '/queryAllResult',
           query: {
             key: this.userinput
           }
-        });
-        this.$emit("sousuo", this.userinput);
+        })
+        this.$emit('sousuo', this.userinput)
       }
     },
     showError(m) {
       this.$message.error({
         message: m
-      });
+      })
     },
     // 导航栏文字样式改变
     changePage(v) {
-      this.choosePage = v;
+      this.choosePage = v
     },
     changGoods(v, item) {
-      this.changePage(v);
+      this.changePage(v)
       if (v === -1) {
         this.$router.push({
-          path: "/"
-        });
+          path: '/'
+        })
       } else if (v === -2) {
         this.$router.push({
-          path: "/refreshgoods"
-        });
+          path: '/refreshgoods'
+        })
       } else {
         // 站内跳转
         if (item.type === 1) {
-          window.location.href = item.fullUrl;
+          window.location.href = item.fullUrl
         } else {
           // 站外跳转
-          window.open(item.fullUrl);
+          window.open(item.fullUrl)
         }
       }
     },
@@ -352,61 +352,61 @@ export default {
         params: {
           key: this.userinput
         }
-      };
+      }
       getQuickSearch(params).then(res => {
-        if (res === null || res === "") {
-          return;
+        if (res === null || res === '') {
+          return
         }
         if (res.error) {
-          this.showError(res.error.reason);
+          this.showError(res.error.reason)
           return;
         }
-        var array = [];
-        var maxSize = 5;
+        var array = []
+        var maxSize = 5
         if (res.hits.hits.length <= 5) {
-          maxSize = res.hits.hits.length;
+          maxSize = res.hits.hits.length
         }
         for (var i = 0; i < maxSize; i++) {
-          var obj = {};
-          obj.value = res.hits.hits[i]._source.productName;
-          array.push(obj);
+          var obj = {}
+          obj.value = res.hits.hits[i]._source.productName
+          array.push(obj)
         }
         if (array.length !== 0) {
-          this.searchResults = array;
+          this.searchResults = array
         } else {
-          this.searchResults = [];
+          this.searchResults = []
         }
-      });
+      })
     },
     querySearchAsync(queryString, cb) {
       if (this.userinput === undefined) {
-        cb([]);
+        cb([])
         return;
       }
-      this.userinput = this.userinput.trim();
-      if (this.userinput === "") {
-        cb([]);
+      this.userinput = this.userinput.trim()
+      if (this.userinput === '') {
+        cb([])
         return;
       } else {
-        this.loadAll();
+        this.loadAll()
         setTimeout(() => {
-          cb(this.searchResults);
-        }, 300);
+          cb(this.searchResults)
+        }, 300)
       }
     },
     handleSelect(item) {
-      this.userinput = item.value;
+      this.userinput = item.value
     },
 
     // 控制顶部
     navFixed() {
       if (
-        this.$route.path === "/goods" ||
-        this.$route.path === "/home" ||
-        this.$route.path === "/goodsDetails"
+        this.$route.path === '/goods' ||
+        this.$route.path === '/home' ||
+        this.$route.path === '/goodsDetails'
       ) {
-        var st = document.documentElement.scrollTop || document.body.scrollTop;
-        st >= 100 ? (this.st = true) : (this.st = false);
+        var st = document.documentElement.scrollTop || document.body.scrollTop
+        st >= 100 ? (this.st = true) : (this.st = false)
         // 计算小圆当前位置
         // let num = document.querySelector('.num')
         // this.positionL = num.getBoundingClientRect().left
@@ -414,9 +414,9 @@ export default {
         this.ADD_ANIMATION({
           cartPositionL: this.positionL,
           cartPositionT: this.positionT
-        });
+        })
       } else {
-        return;
+        return
       }
     },
     // 退出登陆
@@ -427,48 +427,48 @@ export default {
       //   .catch(res => {
       //     alert('请使用正确退出方式')
       //   })
-      removeStore("userInfo");
-      removeStore("token");
-      removeStore("rusername");
-      removeStore("rpassword");
-      localStorage.clear();
-      window.location.href = "http://192.168.1.192:8080/logout";
+      removeStore('userInfo')
+      removeStore('token')
+      removeStore('rusername')
+      removeStore('rpassword')
+      localStorage.clear()
+      window.location.href = 'http://192.168.1.192:8080/logout';
       function test1() {
-        window.location.href = "http://192.168.1.154:1111/#/home";
+        window.location.href = 'http://192.168.1.154:1111/#/home';
         // window.location.href = 'http://192.168.1.192'
       }
-      setTimeout(test1(), 1000);
-      clearTimeout(test1);
+      setTimeout(test1(), 1000)
+      clearTimeout(test1)
     },
     // 通过路由改变导航文字样式
     getPage() {
-      let path = this.$route.path;
+      let path = this.$route.path
       // let fullPath = this.$route.fullPath
-      if (path === "/" || path === "/home") {
-        this.changePage(-1);
-      } else if (path === "/goods") {
-        this.changePage(-2);
+      if (path === '/' || path === '/home') {
+        this.changePage(-1)
+      } else if (path === '/goods') {
+        this.changePage(-2)
       } else {
-        this.changePage(0);
+        this.changePage(0)
       }
     }
   },
   mounted() {
-    let a = getStore("userInfo.info.username");
-    this.userName = JSON.parse(a);
-    this.token = getStore("token");
-    this.navFixed();
-    this.getPage();
-    window.addEventListener("scroll", this.navFixed);
-    window.addEventListener("resize", this.navFixed);
+    let a = getStore('userInfo.info.username')
+    this.userName = JSON.parse(a)
+    this.token = getStore('token')
+    this.navFixed()
+    this.getPage()
+    window.addEventListener('scroll', this.navFixed)
+    window.addEventListener('resize', this.navFixed)
     if (typeof this.$route.query.key !== undefined) {
-      this.userinput = this.$route.query.key;
+      this.userinput = this.$route.query.key
     }
   },
   components: {
     YButton
   }
-};
+}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
 @import "../assets/style/theme";
@@ -491,7 +491,7 @@ export default {
 }
 .zhuce {
   border-left: none;
-  margin-left: -5px;
+  margin-left: -8px;
 }
 .title {
   color: #fff;

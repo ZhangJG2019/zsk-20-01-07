@@ -46,37 +46,37 @@
             <div class="detail-box-top">
               <ul class="clearfix">
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:110px; font-weight:600">项目英文名称:</label>
-                  {{dataObj.projectEnglishName}}
+                  <span style="float:left; width:110px; font-weight:600">项目英文名称:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.projectEnglishName}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">证据等级:</label>
-                  {{dataObj.evidenceLevel}}
+                  <span style="float:left; width:95px; font-weight:600">证据等级:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;">{{dataObj.evidenceLevel}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:110px; font-weight:600">项目编码:</label>
-                  {{dataObj.code}}
+                  <span style="float:left; width:110px; font-weight:600">项目编码:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.code}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">药物:</label>
-                  {{dataObj.drugName}}
+                  <span style="float:left; width:95px; font-weight:600">药物:</span>
+                  <span style="float:left; width:300px;"> {{dataObj.drugName}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:110px; font-weight:600">用药类型:</label>
-                  {{dataObj.medicationType}}
+                  <span style="float:left; width:110px; font-weight:600">用药类型:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.medicationType}}</span>
                 </li>
 
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">基因:</label>
-                  {{dataObj.geneName}}
+                  <span style="float:left; width:95px; font-weight:600">基因:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.geneName}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:110px; font-weight:600">种族:</label>
-                  {{dataObj.race}}
+                  <span style="float:left; width:110px; font-weight:600">种族:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.race}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">单倍型:</label>
-                  {{dataObj.haploidType}}
+                  <span style="float:left; width:95px; font-weight:600">单倍型:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.haploidType}}</span>
                 </li>
                 <!-- <li style="width:50%; line-height:35px; float:left; color:#333;">
                   <label style="display:inline-block; width:110px; font-weight:600">种族详情:</label>
@@ -84,23 +84,23 @@
                 </li> -->
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
                   <span style="float:left; width:110px; font-weight:600">种族详情:</span>
-                  <span style="float:left; width:300px;">{{dataObj.raceDetails}}</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;">{{dataObj.raceDetails}}</span>
                 </li>
                 <li style="width:50%; line-height:35px; float:left; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">位点:</label>
-                  {{dataObj.genePorName}}
+                  <span style="float:left; width:95px; font-weight:600">位点:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;">{{dataObj.genePorName}}</span>
                 </li>
                 <li style="width:50%; line-height:35px;  color:#333;">
                   <span style="float:left; width:110px; font-weight:600">表型:</span>
-                  <span style="float:left; width:300px;">{{dataObj.phenotypes}}</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;">{{dataObj.phenotypes}}</span>
                 </li>
                 <!-- <li style="width:50%; line-height:35px; float:left; color:#333;">
                   <label style="display:inline-block; width:110px; font-weight:600">表型:</label>
                   {{dataObj.phenotypes}}
                 </li> -->
                 <li style="width:50%; line-height:35px; float:right; color:#333;">
-                  <label style="display:inline-block; width:90px; font-weight:600">位点RSID:</label>
-                  {{dataObj.rsId}}
+                  <span style="float:left; width:95px; font-weight:600">位点RSID:</span>
+                  <span style="float:left; width:300px;font-family:Times new roman,Times roman;"> {{dataObj.rsId}}</span>
                 </li>
               </ul>
             </div>
@@ -149,11 +149,14 @@
                     align="center"
                   ></el-table-column>
                   <el-table-column
-                    prop="pmid"
-                    width="90"
+                    width="110"
                     label="PMID"
                     align="center"
-                  ></el-table-column>
+                  >
+                    <template slot-scope="scope">
+                      <p style="font-family:Times new roman,Times roman;">（{{scope.row.pmid}}）</p>
+                    </template>
+                  </el-table-column>
                   <el-table-column
                     prop="name"
                     label="题目"
@@ -161,17 +164,20 @@
                   >
                     <template slot-scope="scope">
                       <p
-                        style="color:#398dbc;cursor: pointer;border-bottom:none;"
+                        style="color:#398dbc;cursor: pointer;border-bottom:none;font-family:Times new roman,Times roman;"
                         @click="toDetailPage(scope.row)"
                       >{{scope.row.name||"--"}}</p>
                     </template>
                   </el-table-column>
                   <el-table-column
-                    prop="journal"
                     width="130"
                     align="center"
                     label="期刊"
-                  ></el-table-column>
+                  >
+                    <template slot-scope="scope">
+                      <p style="font-family:Times new roman,Times roman;">（{{scope.row.journal}}）</p>
+                    </template>
+                  </el-table-column>
                   <el-table-column
                     prop="year"
                     width="130"

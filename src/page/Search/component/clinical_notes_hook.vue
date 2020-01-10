@@ -1,27 +1,48 @@
 <template>
   <div class="hook-box">
     <el-tabs v-model="activeName">
-      <el-tab-pane label="临床注释(基因)" name="first">
+      <el-tab-pane
+        label="临床注释(基因)"
+        name="first"
+      >
         <h6 style="margin-top:10px; font-size:20px; color:#333;">概述</h6>
         <div class="text-box">
           <p>临床注释（基因）是基于数据库中的文献做支撑，提供药物-基因-多个基因位点的信息，描述多个基因位点对药物，表型的影响。</p>
           <p>在临床注释中，报告了多个基因位点结果对药物的影响，例如：当CYP2C19*2(G681A)的位点结果为GA_突变杂合,AA_突变纯合,GG_野生型，CYP2C19*3(G636A)的位点结果为GG_野生型,GA_突变杂合,AA_突变纯合时，毒副风险较高；CYP2C19*2(G681A)的位点结果为GG_野生型，CYP2C19*3(G636A)的位点结果为GG_野生型时，使用常规方案治疗。查看更多临床注释（基因）详情请点击更多。</p>
         </div>
         <div class="table">
-          <el-table border :data="combinedClinicalSuggest" style="width: 100%">
-            <el-table-column label="操作" align="center" width="80">
+          <el-table
+            border
+            :data="combinedClinicalSuggest"
+            style="width: 100%"
+          >
+            <el-table-column
+              label="操作"
+              align="center"
+              width="80"
+            >
               <template slot-scope="scope">
-                <p class="ellipsis td-li-text href-text" @click="toDetailPage(scope.row)">查看更多</p>
+                <p
+                  class="ellipsis td-li-text href-text"
+                  @click="toDetailPage(scope.row)"
+                >查看更多</p>
               </template>
             </el-table-column>
-            <el-table-column label="项目" align="center" width="180">
+            <el-table-column
+              label="项目"
+              align="center"
+              width="180"
+            >
               <template slot-scope="scope">
                 <p>{{scope.row.projectName}}</p>
-                <p>({{scope.row.projectEnglishName}})</p>
+                <p style="font-family:Times new roman,Times roman;">({{scope.row.projectEnglishName}})</p>
               </template>
             </el-table-column>
 
-            <el-table-column align="center" label="用药类型">
+            <el-table-column
+              align="center"
+              label="用药类型"
+            >
               <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text href-text"
@@ -30,7 +51,10 @@
                 >{{list.medicationType||"--"}}</p>
               </template>
             </el-table-column>
-            <el-table-column align="center" label="表型">
+            <el-table-column
+              align="center"
+              label="表型"
+            >
               <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text href-text"
@@ -39,17 +63,27 @@
                 >{{list.phenotypes||"--"}}</p>
               </template>
             </el-table-column>
-            <el-table-column align="center" label="基因" width="100">
+            <el-table-column
+              align="center"
+              label="基因"
+              width="100"
+            >
               <template slot-scope="scope">
                 <p
+                  style="font-family:Times new roman,Times roman;"
                   v-for="(list,index) of scope.row.genePorTypeInfoList"
                   :key="'genes'+index"
                 >{{list.genes||"--"}}</p>
               </template>
             </el-table-column>
-            <el-table-column align="center" label="位点" width="120">
+            <el-table-column
+              align="center"
+              label="位点"
+              width="120"
+            >
               <template slot-scope="scope">
                 <p
+                  style="font-family:Times new roman,Times roman;"
                   v-for="(list,index) of scope.row.genePorTypeInfoList"
                   :key="'porName'+index"
                 >{{list.porName||"--"}}</p>
@@ -58,31 +92,83 @@
           </el-table>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="临床注释(位点)" name="second">
+      <el-tab-pane
+        label="临床注释(位点)"
+        name="second"
+      >
         <h6 style="margin-top:10px; font-size:20px; color:#333;">概述</h6>
         <div class="text-box">
           <p>临床注释（位点）是基于数据库中的文献做支撑，提供药物-基因-基因位点的信息，描述基因型对药物，表型的影响。并根据“证据等级”划分为4类等级，其中等级1为最高标准。</p>
           <p>在临床注释中，报告了给定基因型与其他基因型的表型相对关系，例如：与CC，CT基因型相比，TT基因型可能与毒副风险增加有关，查看更多临床注释（位点）详情请点击更多。</p>
         </div>
         <div class="table">
-          <el-table border :data="geneClinicalSuggest" style="width: 100%">
-            <el-table-column label="操作" align="center" width="80">
+          <el-table
+            border
+            :data="geneClinicalSuggest"
+            style="width: 100%"
+          >
+            <el-table-column
+              label="操作"
+              align="center"
+              width="80"
+            >
               <template slot-scope="scope">
-                <p class="ellipsis td-li-text href-text" @click="toDetailPage(scope.row)">查看更多</p>
+                <p
+                  class="ellipsis td-li-text href-text"
+                  @click="toDetailPage(scope.row)"
+                >查看更多</p>
               </template>
             </el-table-column>
 
-            <el-table-column label="证据等级" prop="evidenceLevel" align="center" width="80"></el-table-column>
-            <el-table-column prop="drugName" label="药物" align="center" width="120">
+            <el-table-column
+              label="证据等级"
+              prop="evidenceLevel"
+              align="center"
+              width="100"
+            >
               <template slot-scope="scope">
-                <p>{{scope.row.drugName}}</p>
-                <p>（{{scope.row.drugEnglishName}}）</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.evidenceLevel}}）</p>
               </template>
             </el-table-column>
-            <el-table-column label="基因" prop="geneName" align="center" width="90"></el-table-column>
-            <el-table-column label="位点" prop="genePorName" align="center" width="110"></el-table-column>
-            <el-table-column label="用药类型" prop="medicationType" align="center"></el-table-column>
-            <el-table-column prop="phenotypes" label="表型" align="center"></el-table-column>
+            <el-table-column
+              prop="drugName"
+              label="药物"
+              align="center"
+              width="120"
+            >
+              <template slot-scope="scope">
+                <p>{{scope.row.drugName}}</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.drugEnglishName}}）</p>
+              </template>
+            </el-table-column>
+            <el-table-column
+              label="基因"
+              align="center"
+              width="90"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template></el-table-column>
+            <el-table-column
+              label="位点"
+              align="center"
+              width="110"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.genePorName}}）</p>
+              </template></el-table-column>
+            <el-table-column
+              label="用药类型"
+              prop="medicationType"
+              align="center"
+            ></el-table-column>
+            <el-table-column
+              label="表型"
+              align="center"
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.phenotypes}}）</p>
+              </template></el-table-column>
           </el-table>
         </div>
       </el-tab-pane>
@@ -94,80 +180,80 @@ import {
   getClinicalAnnotationByDrugGene,
   getClinicalAnnotationByDrug,
   getClinicalAnnotationByGene
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 
-import { setStore, getStore } from "@/utils/storage.js";
+import { setStore, getStore } from '@/utils/storage.js'
 export default {
-  name: "clinical_notes_hook",
+  name: 'clinical_notes_hook',
   data() {
     return {
-      activeName: "first",
+      activeName: 'first',
       combinedClinicalSuggest: [],
       geneClinicalSuggest: []
-    };
+    }
   },
-  props: ["queryData"],
+  props: ['queryData'],
   created() {
-    this.handleClick();
+    this.handleClick()
   },
   methods: {
     handleClick(tab, event) {
       let param = {
-        id: this.queryData.id || "",
-        name: this.queryData.key || ""
-      };
+        id: this.queryData.id || '',
+        name: this.queryData.key || ''
+      }
       let queryData =
-        this.queryData.type === "gene"
+        this.queryData.type === 'gene'
           ? getClinicalAnnotationByGene
-          : this.queryData.type === "project"
+          : this.queryData.type === 'project'
           ? getClinicalAnnotationByDrugGene
-          : getClinicalAnnotationByDrug;
+          : getClinicalAnnotationByDrug
       queryData(param).then(res => {
         // console.log(res);
-        this.combinedClinicalSuggest = res.combinedClinicalSuggest;
-        this.geneClinicalSuggest = res.geneClinicalSuggest;
-      });
+        this.combinedClinicalSuggest = res.combinedClinicalSuggest
+        this.geneClinicalSuggest = res.geneClinicalSuggest
+      })
     },
     toDetailPage(obj) {
-      let routeData = null;
-      if (this.activeName == "second") {
+      let routeData = null
+      if (this.activeName == 'second') {
         routeData = this.$router.resolve({
-          path: "/c-n-w-detail",
+          path: '/c-n-w-detail',
           query: {
             genePorId: obj.genePorId,
             taskId: obj.taskId
           }
-        });
+        })
       } else {
         routeData = this.$router.resolve({
-          path: "/c-n-g-detail",
+          path: '/c-n-g-detail',
           query: {
             projectId: obj.projectId,
             taskId: obj.taskId
           }
-        });
+        })
       }
-      this.setPageData();
-      window.open(routeData.href, "_blank");
+      this.setPageData()
+      window.open(routeData.href, '_blank')
     },
     setPageData() {
-      let pageData = [];
-      if (this.activeName == "second") {
-        pageData = this.geneClinicalSuggest || [];
+      let pageData = []
+      if (this.activeName == 'second') {
+        pageData = this.geneClinicalSuggest || []
       } else {
         this.combinedClinicalSuggest.forEach(res => {
           pageData.push({
             projectId: res.projectId,
             projectName: res.projectName,
             genePorName: res.genePorName
-          });
-        });
+          })
+        })
       }
       // console.log(pageData);
-      setStore("clinical_notes", pageData);
+      setStore('clinical_notes', pageData)
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .text-box {

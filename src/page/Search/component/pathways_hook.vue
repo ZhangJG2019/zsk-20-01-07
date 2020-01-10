@@ -26,7 +26,7 @@
             >
               <template slot-scope="scope">
                 <p
-                  style="color:#398dbc;cursor: pointer;"
+                  style="color:#398dbc;cursor: pointer;font-family:Times new roman,Times roman;"
                   @click="toDetailPage(scope.row)"
                 >{{scope.row.pathways||"--"}}</p>
               </template>
@@ -35,18 +35,28 @@
               prop="drugs"
               label="药物"
               align="center"
-            ></el-table-column>
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.drugs}}）</p>
+              </template>
+            </el-table-column>
             <el-table-column
-              prop="genes"
               align="center"
               label="基因"
-            ></el-table-column>
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.genes}}）</p>
+              </template>
+            </el-table-column>
             <el-table-column
-              prop="diseases"
-              width="60"
+              width="80"
               align="center"
               label="疾病"
-            ></el-table-column>
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.diseases}}）</p>
+              </template>
+            </el-table-column>
           </el-table>
         </div>
       </el-tab-pane>
@@ -82,13 +92,13 @@ export default {
           ? { geneId: this.queryData.id || '', name: this.queryData.key || '' }
           : this.queryData.type === 'project'
           ? {
-              projectId: this.queryData.id || this.queryData.projectId || '',
-              name: this.queryData.key || ''
-            }
+            projectId: this.queryData.id || this.queryData.projectId || '',
+            name: this.queryData.key || ''
+          }
           : {
-              drugId: this.queryData.id || '',
-              name: this.queryData.key || ''
-            }
+            drugId: this.queryData.id || '',
+            name: this.queryData.key || ''
+          }
 
       let queryData =
         this.queryData.type === 'gene'

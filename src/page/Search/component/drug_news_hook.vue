@@ -1,7 +1,13 @@
 <template>
   <div class="hook-box">
-    <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane label="药物信息" name="first">
+    <el-tabs
+      v-model="activeName"
+      @tab-click="handleClick"
+    >
+      <el-tab-pane
+        label="药物信息"
+        name="first"
+      >
         <h6 style="margin-top:10px; font-size:20px; color:#333;">概述</h6>
         <div class="text-box">
           <p>知识库提供与基因相关的药物信息，包括药物商品名，药物说明书，药物医保目录，药物相互作用等数据。</p>
@@ -19,10 +25,13 @@
               <div style="border-bottom:1px solid #ddd; padding-bottom:10px;">
                 <p style="font-size:18px; color:#222">
                   {{item.name}}
-                  <span style="padding-left:15px;font-size:14px; color:#666;"></span>
-                  (英文:{{item.englishName}})
+                  (英文:<span style="padding-left:15px;font-size:18px; color:#666;font-family:Times new roman,Times roman;">{{item.englishName}}</span>)
+
                 </p>
-                <p class="clearfix" style=" margin-top:10px; color:#666;">
+                <p
+                  class="clearfix"
+                  style=" margin-top:10px; color:#666;"
+                >
                   <span class="fr">查看更多</span>
                   <span>ATC编码:{{item.atcCode}}</span>
                 </p>
@@ -39,53 +48,53 @@ import {
   getDrugInfoListByProject,
   getDrugInfoListByDrug,
   getDrugInfoListByGene
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 
-import { setStore, getStore } from "@/utils/storage.js";
+import { setStore, getStore } from '@/utils/storage.js'
 export default {
-  name: "drug_news_hook",
+  name: 'drug_news_hook',
   data() {
     return {
-      activeName: "first",
+      activeName: 'first',
       dataList: []
-    };
+    }
   },
-  props: ["queryData"],
+  props: ['queryData'],
   created() {
-    this.handleClick();
+    this.handleClick()
   },
   methods: {
     handleClick(tab, event) {
       let param = {
-        id: this.queryData.id || "",
-        name: this.queryData.key || ""
-      };
+        id: this.queryData.id || '',
+        name: this.queryData.key || ''
+      }
       let queryData =
-        this.queryData.type === "gene"
+        this.queryData.type === 'gene'
           ? getDrugInfoListByGene
-          : this.queryData.type === "project"
+          : this.queryData.type === 'project'
           ? getDrugInfoListByProject
-          : getDrugInfoListByDrug;
+          : getDrugInfoListByDrug
       queryData(param).then(res => {
         // console.log(res);
-        this.dataList = res;
-      });
+        this.dataList = res
+      })
     },
     toDetailPage(obj) {
-      let routeData = null;
-      if (this.activeName == "first") {
+      let routeData = null
+      if (this.activeName == 'first') {
         routeData = this.$router.resolve({
-          path: "/drug-news",
+          path: '/drug-news',
           query: {
             id: obj.id
           }
-        });
+        })
       }
-      setStore("drug_news", obj.name);
-      window.open(routeData.href, "_blank");
+      setStore('drug_news', obj.name)
+      window.open(routeData.href, '_blank')
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .text-box {
@@ -110,7 +119,7 @@ export default {
         top: 19px;
         font-size: 35px;
         color: #3c8cbf;
-        background: url("../../../public/images/linchuangzhushi.png") no-repeat;
+        background: url('../../../public/images/linchuangzhushi.png') no-repeat;
         background-size: contain;
         width: 30px;
         height: 30px;

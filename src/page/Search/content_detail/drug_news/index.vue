@@ -63,13 +63,13 @@
               <label style="width: 120px;display: inline-block;color: #666;">
                 <strong>药物英文名称:</strong>
               </label>
-              {{zongji.englishName}}
+              <span style="font-family:Times new roman,Times roman;"> {{zongji.englishName}}</span>
             </p>
             <p>
               <label style="width: 120px;display: inline-block;color: #666;">
                 <strong>药物ATC编码:</strong>
               </label>
-              {{zongji.atcCode}}
+              <span style="font-family:Times new roman,Times roman;"> {{zongji.atcCode}}</span>
             </p>
             <p>
               <label style="width: 120px;display: inline-block;color: #666;">
@@ -165,7 +165,7 @@
                 <div class="boxes">
                   <p style="font-size:16px; font-weight:600; color:#222">
                     {{item.name}}
-                    <span style="font-size:12px; padding-left:12px;">(英文名：{{item.englishName}})</span>
+                    ( 英文名: <span style="font-size:12px; font-family:Times new roman,Times roman;">{{item.englishName}}</span> )
                   </p>
                   <p style=" margin-top:10px;">
                     <span class="tips">

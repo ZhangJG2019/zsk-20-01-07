@@ -27,15 +27,18 @@
             >
               <template slot-scope="scope">
                 <p>{{scope.row.drugName}}</p>
-                <p>（{{scope.row.englishName}}）</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.englishName}}）</p>
               </template>
             </el-table-column>
             <el-table-column
-              prop="geneName"
-              width="100"
+              width="120"
               label="基因"
               align="center"
-            ></el-table-column>
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="literName"
               align="center"
@@ -97,21 +100,28 @@
             >
               <template slot-scope="scope">
                 <p>{{scope.row.drugName}}</p>
-                <p>（{{scope.row.englishName}}）</p>
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.englishName}}）</p>
               </template>
             </el-table-column>
             <el-table-column
               prop="geneName"
-              width="100"
+              width="120"
               label="基因"
               align="center"
-            ></el-table-column>
+            >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
+            </el-table-column>
             <el-table-column
               prop="pgxLevel"
               width="150"
               label="循证等级"
               align="center"
             >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"
@@ -135,17 +145,20 @@
               </template>-->
               <template slot-scope="scope">
                 <p
-                  style="color:#398dbc;cursor: pointer;"
+                  style="color:#398dbc;cursor: pointer;font-family:Times new roman,Times roman;"
                   @click="toDetailPage(scope.row)"
                 >{{scope.row.literName}}</p>
               </template>
             </el-table-column>
             <el-table-column
               prop="source"
-              width="80"
+              width="100"
               label="来源"
               align="center"
             >
+              <template slot-scope="scope">
+                <p style="font-family:Times new roman,Times roman;">（{{scope.row.source}}）</p>
+              </template>
               <!-- <template slot-scope="scope">
                 <p
                   class="ellipsis td-li-text"

@@ -1,5 +1,4 @@
 /* eslint-disable no-debugger */
-/* eslint-disable no-debugger */
 <template>
   <div>
     <p class="detail-tab">

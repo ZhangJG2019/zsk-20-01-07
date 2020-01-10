@@ -30,6 +30,7 @@
                 v-if="item.liteName!==''||item.source!==null"
               >{{item.drugName}}--{{item.geneName}}</p>
               <p
+                style="font-family:Times new roman,Times roman;"
                 class="ellipsis"
                 v-if="item.liteName!==''||item.source!==null"
               >{{item.literName}}</p>
@@ -46,19 +47,29 @@
           </p>
           <div class="china-box">
             <div class="detail-box-top">
-              <h3 class="page-title-name">{{dataObj.title}}</h3>
+              <h3
+                class="page-title-name"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.title}}</h3>
             </div>
             <div class="detail-box-content">
               <h4 class="section-box">循证等级</h4>
-              <p class="text-box">{{dataObj.pgxLevel}}</p>
+              <p
+                class="text-box"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.pgxLevel}}</p>
             </div>
           </div>
           <div class="detail-box-content">
             <h4 class="section-box">摘要</h4>
-            <p class="text-box">{{dataObj.summary}}</p>
+            <p
+              class="text-box"
+              style="font-family:Times new roman,Times roman;"
+            >{{dataObj.summary}}</p>
             <h4 class="section-box">注释</h4>
             <!-- <p class="text-box" v-html="dataObj.annotation">{{dataObj.annotation}}</p> -->
             <p
+              style="font-family:Times new roman,Times roman;"
               class="text-box"
               v-html="dataObj.annotation"
             ></p>

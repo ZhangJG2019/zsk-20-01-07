@@ -4,20 +4,27 @@
     <y-header>
       <div slot="nav"></div>
     </y-header>
-    <el-card class="box-card" style="width:76.5rem; margin:0 auto;">
+    <el-card
+      class="box-card"
+      style="width:76.5rem; margin:0 auto;"
+    >
       <div class="tablecontent">
         <div class="content_title">
           <el-row>
-            <el-col :span="24" style="margin-bottom:20px;">
+            <el-col
+              :span="24"
+              style="margin-bottom:20px;"
+            >
               <el-breadcrumb separator-class="el-icon-arrow-right">
-                <el-breadcrumb-item :to="{ path: '/' }" style="font-size:15px;">首页</el-breadcrumb-item>
-                <el-breadcrumb-item style="font-size:15px;">知识库用户</el-breadcrumb-item>
+                <el-breadcrumb-item
+                  :to="{ path: '/' }"
+                  style="font-size:15px;font-family:SimSun;"
+                >首页</el-breadcrumb-item>
+                <el-breadcrumb-item style="font-size:15px;font-family:SimSun;">知识库用户</el-breadcrumb-item>
               </el-breadcrumb>
             </el-col>
             <el-col :span="24">
-              <p
-                style="font-size: 1rem;font-family:microsoft yahei;margin-bottom:1.25rem;font-weight:100;height:100%;"
-              >暂无数据</p>
+              <p style="font-size: 1rem;font-family:SimSun;margin-bottom:1.25rem;font-weight:100;height:100%;">暂无数据</p>
             </el-col>
           </el-row>
           <el-row style="margin-top:30px;"></el-row>
@@ -28,13 +35,13 @@
   </div>
 </template>
 <script>
-import YShelf from "/components/shelf";
-import YButton from "/components/YButton";
-import YHeader from "/common/header";
-import YFooter from "/common/footer";
+import YShelf from '/components/shelf'
+import YButton from '/components/YButton'
+import YHeader from '/common/header'
+import YFooter from '/common/footer'
 // import $ from 'jquery'
-import "element-ui";
-import axios from "axios";
+import 'element-ui'
+import axios from 'axios'
 export default {
   // 生命周期函数
 
@@ -44,15 +51,15 @@ export default {
       geneList: [],
       totalNum: 0, // 复选框数据（括号里面的数字）的总数
       keytitle: [],
-      type: "",
-      filter_input: "",
+      type: '',
+      filter_input: '',
       map: new Map(),
-      ids: ""
-    };
+      ids: ''
+    }
   },
   created() {
-    this.getNotice();
-    this.getNoticeTitle();
+    this.getNotice()
+    this.getNoticeTitle()
   },
   mounted() {},
   methods: {
@@ -60,15 +67,15 @@ export default {
     getNotice() {
       // var gonggao = '公告'
       // var url = '/apis/cms/api/getColumnNewList?title=' + gonggao
-      var url = "static/data/getGene.json";
+      var url = 'static/data/getGene.json'
       axios({
-        method: "get",
+        method: 'get',
         url: url
       }).then(res => {
         // 把获得好的数据 赋予 给getGene成员
-        this.getGene = res.data;
-        this.geneList = this.getGene;
-        this.totalNum = this.getGene.length;
+        this.getGene = res.data
+        this.geneList = this.getGene
+        this.totalNum = this.getGene.length
         // console.log(res)
         for (let i = 0; i < this.getGene.length; i++) {
           this.map.set(
@@ -76,41 +83,41 @@ export default {
             this.map.get(this.getGene[i].typeId) == null
               ? 1
               : this.map.get(this.getGene[i].typeId) + 1
-          );
+          )
         }
-      });
+      })
     },
     // 基因数据左侧标题获取
     getNoticeTitle() {
       // var gonggao = '公告'
       // var url = '/apis/cms/api/getColumnNewList?title=' + gonggao
-      var url = "static/data/getGenetitle.json";
+      var url = 'static/data/getGenetitle.json'
       axios({
-        method: "get",
+        method: 'get',
         url: url
       }).then(res => {
         // 把获得好的数据 赋予 给getGene成员
-        this.keytitle = res.data;
+        this.keytitle = res.data
         // console.log(res)
-      });
+      })
     },
     // 点击基因数据标题获取对应列表数据
     handleCheckedTypesChange(id) {
-      this.geneList = [];
-      if (this.ids.indexOf(id + ",") === -1) {
-        this.ids += id + ",";
+      this.geneList = []
+      if (this.ids.indexOf(id + ',') === -1) {
+        this.ids += id + ','
       } else {
-        this.ids = this.ids.replace(id + ",", "");
+        this.ids = this.ids.replace(id + ',', '')
       }
       // console.log(this.ids)
-      if (this.ids === "") {
-        this.geneList = this.getGene;
-        return;
+      if (this.ids === '') {
+        this.geneList = this.getGene
+        return
       }
       for (let i = 0; i < this.getGene.length; i++) {
-        let typeId = this.getGene[i].typeId + ",";
+        let typeId = this.getGene[i].typeId + ','
         if (this.ids.indexOf(typeId) !== -1) {
-          this.geneList.push(this.getGene[i]);
+          this.geneList.push(this.getGene[i])
         }
       }
     }
@@ -121,7 +128,7 @@ export default {
     YHeader,
     YFooter
   }
-};
+}
 </script>
 <style lang="scss" rel="stylesheet/scss" scoped>
 .gene_list li:hover {

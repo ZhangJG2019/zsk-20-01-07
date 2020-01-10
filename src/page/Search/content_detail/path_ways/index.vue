@@ -47,16 +47,19 @@
         <div v-if="tabsCur=='0'">
           <h4 class="section-box">摘要</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.summary"
           ></div>
           <h4 class="section-box">相关通路</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.relatedPathways"
           ></div>
           <h4 class="section-box">参考文献</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.publication"
           ></div>
@@ -80,21 +83,25 @@
           </ul>-->
           <h4 class="section-box">描述</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.description"
           ></div>
           <h4 class="section-box">作者</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.authors"
           ></div>
           <h4 class="section-box">引文</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.citation"
           ></div>
           <h4 class="section-box">治疗类别</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.therapaeutic"
           ></div>
@@ -104,6 +111,7 @@
           </ul>-->
           <h4 class="section-box">日志</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zongji.history"
           ></div>
@@ -111,13 +119,25 @@
 
         <div v-if="tabsCur=='1'">
           <h4 class="section-box">通路</h4>
-          <div class="text-box">{{zuchengbufen.pathways}}</div>
+          <div
+            class="text-box"
+            style="font-family:Times new roman,Times roman;"
+          >{{zuchengbufen.pathways}}</div>
           <h4 class="section-box">基因</h4>
-          <div class="text-box">{{zuchengbufen.genes}}</div>
+          <div
+            class="text-box"
+            style="font-family:Times new roman,Times roman;"
+          >{{zuchengbufen.genes}}</div>
           <h4 class="section-box">药物</h4>
-          <div class="text-box">{{zuchengbufen.drugs}}</div>
+          <div
+            class="text-box"
+            style="font-family:Times new roman,Times roman;"
+          >{{zuchengbufen.drugs}}</div>
           <h4 class="section-box">疾病</h4>
-          <div class="text-box">{{zuchengbufen.diseases}}</div>
+          <div
+            class="text-box"
+            style="font-family:Times new roman,Times roman;"
+          >{{zuchengbufen.diseases}}</div>
           <h4 class="section-box">相互作用</h4>
           <!-- <div
             class="text-box"
@@ -125,11 +145,13 @@
             v-html="zuchengbufen.interactions"
           ></div> -->
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zuchengbufen.interactions"
           ></div>
           <h4 class="section-box">通路中的关系</h4>
           <div
+            style="font-family:Times new roman,Times roman;"
             class="text-box"
             v-html="zuchengbufen.relationships"
           ></div>
@@ -162,26 +184,38 @@
               :data="relatedParhways"
             >
               <el-table-column
-                prop="relatedPathways"
                 label="通路"
                 align="center"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.relatedPathways}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="cf1"
                 label="药物"
                 align="center"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.cf1}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="cf2"
                 align="center"
                 label="基因"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.cf2}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="cf3"
                 width="80"
                 align="center"
                 label="表型"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.cf3}}）</p>
+                </template>
+              </el-table-column>
             </el-table>
           </div>
         </div>
@@ -213,46 +247,61 @@
               :data="pathways_Data"
             >
               <el-table-column
-                prop="chemicals"
-                width="100"
+                width="120"
                 align="center"
                 label="药物"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.chemicals}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="gene"
-                width="90"
+                width="110"
                 align="center"
                 label="基因"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.gene}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="pmid"
                 align="center"
-                width="100"
+                width="120"
                 label="PMID"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.pmid}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
                 align="center"
                 label="题目"
               >
                 <template slot-scope="scope">
                   <p
-                    style="color:#398dbc;cursor: pointer;border-bottom:none;"
+                    style="color:#398dbc;cursor: pointer;border-bottom:none;font-family:Times new roman,Times roman;"
                     @click="toDetailPage(scope.row)"
                   >{{scope.row.name||"--"}}</p>
                 </template>
               </el-table-column>
               <el-table-column
-                prop="journal"
                 align="center"
                 width="160"
                 label="期刊"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.journal}}）</p>
+                </template>
+              </el-table-column>
               <el-table-column
-                prop="year"
                 align="center"
-                width="60"
+                width="80"
                 label="年份"
-              ></el-table-column>
+              >
+                <template slot-scope="scope">
+                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.year}}）</p>
+                </template>
+              </el-table-column>
             </el-table>
           </div>
         </div>

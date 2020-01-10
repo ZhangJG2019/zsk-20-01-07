@@ -6,13 +6,48 @@
       更多信息请点击位点，查看基因位点的数据
     </div>
     <div class="table">
-      <el-table border style="width: 100%" :data="data_statistics">
-        <el-table-column prop="geneName" label="基因" width="220" align="center"></el-table-column>
-        <el-table-column prop="genePorName" label="位点" width="180" align="center"></el-table-column>
-        <el-table-column prop="rsId" label="RSID" width="220" align="center"></el-table-column>
-        <el-table-column prop="gene_pinlu" align="center" label="基因频率">
+      <el-table
+        border
+        style="width: 100%"
+        :data="data_statistics"
+      >
+        <el-table-column
+          label="基因"
+          width="220"
+          align="center"
+        >
           <template slot-scope="scope">
-            <p class="ellipsis td-li-text href-text" @click="toDetailPage(scope.row)">查看</p>
+            <p style="font-family:Times new roman,Times roman;">（{{scope.row.geneName}}）</p>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="位点"
+          width="180"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <p style="font-family:Times new roman,Times roman;">（{{scope.row.genePorName}}）</p>
+          </template>
+        </el-table-column>
+        <el-table-column
+          label="RSID"
+          width="220"
+          align="center"
+        >
+          <template slot-scope="scope">
+            <p style="font-family:Times new roman,Times roman;">（{{scope.row.rsId}}）</p>
+          </template>
+        </el-table-column>
+        <el-table-column
+          prop="gene_pinlu"
+          align="center"
+          label="基因频率"
+        >
+          <template slot-scope="scope">
+            <p
+              class="ellipsis td-li-text href-text"
+              @click="toDetailPage(scope.row)"
+            >查看</p>
           </template>
         </el-table-column>
       </el-table>
@@ -20,65 +55,65 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import { setStore, getStore } from "@/utils/storage.js";
+import axios from 'axios'
+import { setStore, getStore } from '@/utils/storage.js'
 import {
   getDataStatisticsListVOByDrugId,
   getDataStatisticsListVOByGeneId,
   getDataStatisticsListVOByProjectId
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 export default {
-  name: "data_statistics_hook",
+  name: 'data_statistics_hook',
   data() {
     return {
-      activeName: "first",
+      activeName: 'first',
       data_statistics: []
-    };
+    }
   },
-  props: ["queryData"],
+  props: ['queryData'],
   created() {
-    this.handleClick();
+    this.handleClick()
   },
   methods: {
     handleClick(tab, event) {
       let param = {
-        id: this.queryData.id || "",
-        name: this.queryData.key || ""
-      };
+        id: this.queryData.id || '',
+        name: this.queryData.key || ''
+      }
       let queryData =
-        this.queryData.type === "gene"
+        this.queryData.type === 'gene'
           ? getDataStatisticsListVOByGeneId
-          : this.queryData.type === "project"
+          : this.queryData.type === 'project'
           ? getDataStatisticsListVOByProjectId
-          : getDataStatisticsListVOByDrugId;
+          : getDataStatisticsListVOByDrugId
       queryData(param)
         .then(res => {
           // console.log(res);
-          this.loading = false;
-          this.data_statistics = res;
+          this.loading = false
+          this.data_statistics = res
         })
         .catch(err => {
-          this.loading = false;
-        });
+          this.loading = false
+        })
     },
     toDetailPage(obj) {
       // console.log(obj);
 
-      let routeData = null;
-      if (this.activeName == "first") {
+      let routeData = null
+      if (this.activeName == 'first') {
         routeData = this.$router.resolve({
-          path: "/d-s-detail",
+          path: '/d-s-detail',
           query: {
             id: obj.genePorId,
-            typemap: "0"
+            typemap: '0'
           }
-        });
+        })
       }
-      setStore("data_statistics_hook", obj);
-      window.open(routeData.href, "_blank");
+      setStore('data_statistics_hook', obj)
+      window.open(routeData.href, '_blank')
     }
   }
-};
+}
 </script>
 <style lang="scss" scoped>
 .text-box {

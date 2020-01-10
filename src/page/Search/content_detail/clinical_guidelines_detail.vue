@@ -34,16 +34,25 @@
                 class="ellipsis"
                 v-if="item.liteName!==''||item.source!==null"
               >{{item.drugName}}--{{item.geneName}}</p>
-              <p class="ellipsis" v-if="item.liteName!==''||item.source!==null">{{item.literName}}</p>
+              <p
+                class="ellipsis"
+                v-if="item.liteName!==''||item.source!==null"
+              >{{item.literName}}</p>
             </li>
           </ul>
         </div>
         <div class="right-content-box">
           <p class="detail-tab">
             <el-button class="tabcur">注释查看</el-button>
-            <el-button class="tabdefault" @click="topageURL">原文查看</el-button>
+            <el-button
+              class="tabdefault"
+              @click="topageURL"
+            >原文查看</el-button>
           </p>
-          <div class="china-box" v-if="this.queryObj.type=='1'">
+          <div
+            class="china-box"
+            v-if="this.queryObj.type=='1'"
+          >
             <div class="detail-box-top">
               <h3 class="page-title-name">{{dataObj.title}}</h3>
               <p>发布日期:{{dataObj.releaseDate}}</p>
@@ -55,19 +64,40 @@
               <p class="text-box">{{dataObj.contentIntroduce}}</p>
             </div>
           </div>
-          <div class="english-box" v-if="this.queryObj.type=='2'">
+          <div
+            class="english-box"
+            v-if="this.queryObj.type=='2'"
+          >
             <div class="detail-box-top">
-              <h3 class="page-title-name">{{dataObj.title}}</h3>
+              <h3
+                class="page-title-name"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.title}}</h3>
             </div>
             <div class="detail-box-content">
               <h4 class="section-box">摘要</h4>
-              <p class="text-box">{{dataObj.summary}}</p>
+              <p
+                class="text-box"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.summary}}</p>
               <h4 class="section-box">注释</h4>
-              <p class="text-box" v-html="dataObj.annotation"></p>
+              <p
+                style="font-family:Times new roman,Times roman;"
+                class="text-box"
+                v-html="dataObj.annotation"
+              ></p>
               <h4 class="section-box">参考文献</h4>
-              <div class="text-box" v-html="dataObj.publications"></div>
+              <div
+                style="font-family:Times new roman,Times roman;"
+                class="text-box"
+                v-html="dataObj.publications"
+              ></div>
               <h4 class="section-box">日志</h4>
-              <div class="text-box" v-html="dataObj.history"></div>
+              <div
+                style="font-family:Times new roman,Times roman;"
+                class="text-box"
+                v-html="dataObj.history"
+              ></div>
             </div>
           </div>
         </div>
@@ -76,75 +106,75 @@
   </div>
 </template>
 <script>
-import Vue from "vue";
-import { setStore, getStore } from "@/utils/storage.js";
-import "element-ui/lib/theme-chalk/index.css";
+import Vue from 'vue'
+import { setStore, getStore } from '@/utils/storage.js'
+import 'element-ui/lib/theme-chalk/index.css'
 import {
   getClinicalGuidelinesDomesticDetail,
   getClinicalGuidelinesForeignDetail
-} from "@/api/labels_api.js";
+} from '@/api/labels_api.js'
 export default {
   // 生命周期函数
   data() {
     return {
-      tabsCur: "12",
+      tabsCur: '12',
       tabs: [],
       queryObj: {},
       dataObj: {}
-    };
+    }
   },
   created() {
     this.queryObj =
-      Object.keys(this.$route.query).length > 0 ? this.$route.query : {};
-    this.tabsCur = this.queryObj.literId;
-    this.tabs = JSON.parse(getStore("clinical_guidelines")) || [];
+      Object.keys(this.$route.query).length > 0 ? this.$route.query : {}
+    this.tabsCur = this.queryObj.literId
+    this.tabs = JSON.parse(getStore('clinical_guidelines')) || []
     // console.log(this.tabs[0].href);
   },
   mounted() {
     // console.log(123);
-    this.queryData();
+    this.queryData()
   },
   methods: {
     prev(num) {
       if (num == 1) {
-        let url = "http://localhost:9999/#" + this.tabs[0].href;
-        window.location.href = url;
+        let url = 'http://localhost:9999/#' + this.tabs[0].href
+        window.location.href = url
       } else if (num == 2) {
         // let url = "http://localhost:9999/#" + this.tabs[0].href;
         // window.location.href = url;
 
-        this.$router.go(-2);
+        this.$router.go(-2)
       }
     },
     tabsliClick(obj, index) {
-      if (this.tabsCur == obj.id) return;
-      this.tabsCur = obj.literId;
+      if (this.tabsCur == obj.id) return
+      this.tabsCur = obj.literId
       this.$nextTick(function() {
-        this.queryData();
-      });
+        this.queryData()
+      })
     },
     queryData() {
-      let type = this.queryObj.type;
+      let type = this.queryObj.type
       let queryDetailData =
-        type == "1"
+        type == '1'
           ? getClinicalGuidelinesDomesticDetail
-          : getClinicalGuidelinesForeignDetail;
+          : getClinicalGuidelinesForeignDetail
       queryDetailData({ literId: this.tabsCur }).then(res => {
-        this.dataObj = res;
-      });
+        this.dataObj = res
+      })
     },
     topageURL() {
       if (this.dataObj.fileUrl == null) {
         this.$message({
-          message: "网站暂时无这篇原文可查看~",
-          type: "warning"
-        });
-        return;
+          message: '网站暂时无这篇原文可查看~',
+          type: 'warning'
+        })
+        return
       }
-      window.open(this.dataObj.fileUrl, "_blank");
+      window.open(this.dataObj.fileUrl, '_blank')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -239,7 +269,7 @@ export default {
           font-size: 14px;
           line-height: 30px;
           &::before {
-            content: "";
+            content: '';
             display: inline-block;
             width: 5px;
             height: 5px;

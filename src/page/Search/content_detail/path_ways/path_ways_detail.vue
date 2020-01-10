@@ -26,9 +26,12 @@
               <i class="icon-right">{{index+1}}、</i>
               <p
                 class="ellipsis"
-                style="color:#888;font-size:15px;"
+                style="color:#888;font-size:15px;font-family:Times new roman,Times roman;"
               >{{item.gene}}-{{item.chemicals}}</p>
-              <p class="ellipsis">{{item.name}}</p>
+              <p
+                class="ellipsis"
+                style="font-family:Times new roman,Times roman;"
+              >{{item.name}}</p>
             </li>
           </ul>
         </div>
@@ -42,25 +45,31 @@
           </p>
           <div class="china-box">
             <div class="detail-box-top">
-              <h3 class="page-title-name">{{dataObj.name}}</h3>
-              <p>通路:{{dataObj.pathways}}</p>
-              <p>作者:{{dataObj.author}}</p>
-              <p>PMID:{{dataObj.pmid}}</p>
-              <p>期刊:{{dataObj.journal}}</p>
-              <p>年，卷(期):{{dataObj.volume}}</p>
-              <p>基因:{{dataObj.gene}}</p>
-              <p>位点:{{dataObj.name}}</p>
-              <p>药物:{{dataObj.chemicals}}</p>
-              <p>表型:{{dataObj.phenotypes}}</p>
+              <h3
+                class="page-title-name"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.name}}</h3>
+              <p> <strong>通路:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.pathways}}</span></p>
+              <p> <strong>作者:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.author}}</span></p>
+              <p> <strong>PMID:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.pmid}}</span></p>
+              <p> <strong>期刊:</strong><span style="font-family:Times new roman,Times roman;"> {{dataObj.journal}}</span></p>
+              <p> <strong>年，卷(期 ):</strong><span style="font-family:Times new roman,Times roman;">{{dataObj.volume}}</span></p>
+              <p> <strong>基因:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.gene}}</span></p>
+              <p> <strong>位点:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.name}}</span></p>
+              <p> <strong>药物:</strong> <span style="font-family:Times new roman,Times roman;">{{dataObj.chemicals}}</span></p>
+              <p> <strong>表型:</strong><span style="font-family:Times new roman,Times roman;"> {{dataObj.phenotypes}}</span></p>
             </div>
             <div class="detail-box-content">
               <h4 class="section-box">摘要</h4>
-              <p class="text-box">{{dataObj.abstracts}}</p>
+              <p
+                class="text-box"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.abstracts}}</p>
 
               <h4 class="section-box">位点注释</h4>
               <div
                 class="table"
-                style="width:1000px; overflow:auto;"
+                style="width:1000px; overflow:auto;font-family:Times new roman,Times roman;"
                 v-html="dataObj.variantAnnotations"
               >
                 <!-- <el-table border style="width: 100%">
@@ -72,7 +81,10 @@
                 </el-table> -->
               </div>
               <h4 class="section-box">处方信息</h4>
-              <p class="text-box">{{dataObj.prescribingInfo}}</p>
+              <p
+                class="text-box"
+                style="font-family:Times new roman,Times roman;"
+              >{{dataObj.prescribingInfo}}</p>
             </div>
           </div>
         </div>
@@ -101,7 +113,6 @@ export default {
     this.tabsCur = this.queryObj.literId
     this.tabs = JSON.parse(getStore('path_ways_detail')) || []
     // eslint-disable-next-line no-debugger
-    debugger
   },
   mounted() {
     this.queryData()
