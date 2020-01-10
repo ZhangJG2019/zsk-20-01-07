@@ -78,7 +78,7 @@
                       <li
                         v-for="list of filterData(scope.row.drugLabelList,'FDA')"
                         :key="list.liteId"
-                        @click="toSearchContent(item.id,item.name,'project','2',true)"
+                        @click="toSearchContent(list.liteId,item.name,'project','2',true)"
                       >
                         <el-tag
                           :color="returnColor(list.pgxLevel)"
@@ -97,7 +97,7 @@
                       <li
                         v-for="list of filterData(scope.row.drugLabelList,'EMA')"
                         :key="list.liteId"
-                        @click="toSearchContent(item.id,item.name,'project','2',true)"
+                        @click="toSearchContent(list.liteId,item.name,'project','2',true)"
                       >
                         <el-tag
                           :color="returnColor(list.pgxLevel)"
@@ -116,7 +116,7 @@
                       <li
                         v-for="list of filterData(scope.row.drugLabelList,'HCSC')"
                         :key="list.liteId"
-                        @click="toSearchContent(item.id,item.name,'project','2',true)"
+                        @click="toSearchContent(list.liteId,item.name,'project','2',true)"
                       >
                         <el-tag
                           :color="returnColor(list.pgxLevel)"
@@ -135,7 +135,7 @@
                       <li
                         v-for="list of filterData(scope.row.drugLabelList,'PMDA')"
                         :key="list.liteId"
-                        @click="toSearchContent(item.id,item.name,'project','2',true)"
+                        @click="toSearchContent(list.liteId,item.name,'project','2',true)"
                       >
                         <el-tag
                           :color="returnColor(list.pgxLevel)"
@@ -154,7 +154,7 @@
                       <li
                         v-for="list of filterData(scope.row.drugLabelList,'CFDA')"
                         :key="list.liteId"
-                        @click="toSearchContent(item.id,item.name,'project','2',true)"
+                        @click="toSearchContent(list.liteId,item.name,'project','1',true)"
                       >
                         <el-tag
                           :color="returnColor(list.pgxLevel)"
@@ -299,19 +299,38 @@ export default {
       return colorV
     },
     toSearchContent(geneId, name, type, str, num) {
-      // console.log(num);
+      debugger
       if (!num) return
-      let routeData = this.$router.resolve({
-        path: '/searchContent',
-        query: {
-          key: name,
-          id: geneId,
-          type: type,
-          tabs: str
-        }
-      })
-
-      window.open(routeData.href, '_blank')
+      // let routeData = this.$router.resolve({
+      //   path: '/searchContent',
+      //   query: {
+      //     key: name,
+      //     id: geneId,
+      //     type: type,
+      //     tabs: str
+      //   }
+      // })
+      if (str == '1') {
+        let routeData = this.$router.resolve({
+          path: '/d-l-c-detail',
+          query: {
+            literId: geneId,
+            type: str === '1' ? '1' : '2',
+            num: num
+          }
+        })
+        window.open(routeData.href, '_blank')
+      } else if (str == '2') {
+        let routeData = this.$router.resolve({
+          path: '/d-l-f-detail',
+          query: {
+            literId: geneId,
+            type: '2',
+            num: num
+          }
+        })
+        window.open(routeData.href, '_blank')
+      }
     }
   },
   components: {

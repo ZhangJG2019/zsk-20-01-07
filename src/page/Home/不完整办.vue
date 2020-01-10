@@ -6,12 +6,16 @@
     </y-header>
     <label-page
       ref="homePage"
-      style="min-height: calc(100vh - 230px);"
+      style=" min-height: calc(100vh - 230px);"
     >
       <div slot="banner-text">
         <h4 class="box-title">
           <i class="authority-icon"></i>
-          <span class="text">临床指南(Clinical Guidelines)</span>
+          <p
+            class="text"
+            style="display:inline-block;line-height: 80px; padding:0;   text-indent: 0.8em;"
+          >临床指南(<span style="font-family:Times new roman,Times roman;"> Clinical Guidelines </span>)</p>
+          <!-- <span class="text">临床指南(Clinical Guidelines)</span> -->
         </h4>
         <p class="text">
           临床指南是由临床药物遗传学实施联盟、（CPIC），荷兰皇家药剂师协会成立的药物遗传学工作组（DPWG），加拿大药物基因组学药品安全网（CPNDS），其他专业协会，中国专家共识基于PGx药物剂量发布的指南推荐，简要介绍了基于基因型的临床建议，并提供可下载的指南PDF文件。
@@ -22,7 +26,7 @@
       </div>
       <div slot="filter-box">
         <p class="fr">
-          共{{listAllNum}}条临床记录，当前显示{{(pageNum*pageSize-9)+"-"+pageNum*pageSize}}
+          共{{listAllNum}}条临床记录，当前显示{{(pageNum*pageSize-9)+"-"+pageSize*pageNum}}条
         </p>
         <div class="fl">
           <el-select
@@ -57,7 +61,7 @@
       <div class="content-box">
         <p
           v-if="!tableData&&!loading"
-          style="text-align:center; padding-top:20px;"
+          style="text-align:center;padding-top:20px;"
         >暂无数据</p>
         <div
           class="table authority"
@@ -67,38 +71,39 @@
           <table
             class="table-box"
             cellspacing="0"
-            cellpadding="0"
+            cellpading="0"
           >
             <thead>
               <tr>
+                <th width="16%">药物中文<br>药物英文</th>
                 <th width="16%">
-                  药物中文
-                  <br />药物英文
+
+                  <span style="font-family:Times new roman,Times roman;">CPIC</span>
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>
+                  {{tableData.cpicNum}}
                 </th>
                 <th width="16%">
-                  CPIC
-                  <br />
-                  n={{tableData.cpicNum}}
+                  <span style="font-family:Times new roman,Times roman;">DPWG</span>
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.dpwgNum}}
                 </th>
                 <th width="16%">
-                  DPWG
-                  <br />
-                  n={{tableData.dpwgNum}}
-                </th>
-                <th width="16%">
-                  CPNDS
-                  <br />
-                  n={{tableData.cpndsNum}}
+                  <span style="font-family:Times new roman,Times roman;">CPNDS</span>
+
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.cpndsNum}}
                 </th>
                 <th width="16%">
                   专家共识
-                  <br />
-                  n={{tableData.expertNum}}
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.expertNum}}
                 </th>
                 <th width="16%">
-                  Other
-                  <br />
-                  n={{tableData.otherNum}}
+
+                  <span style="font-family:Times new roman,Times roman;">Other</span>
+                  <br>
+                  <span style="font-family:Times new roman,Times roman;">n=</span>{{tableData.otherNum}}
                 </th>
               </tr>
             </thead>
@@ -109,33 +114,34 @@
               >
                 <td>
                   <p
-                    style="cursor: pointer;"
-                    @click="toSearchContent(item.liteId,list.name,'drug','0',true)"
+                    style="currsor:pointer;"
+                    @click="toSearchContent('',list.name,'drug','0',true)"
                   >{{list.name}}</p>
-                  <p style="color:#999;">{{list.englishName}}</p>
+                  <p style="color:#999;font-family:Times new roman,Times roman;">{{list.englishName}}</p>
                 </td>
                 <td>
                   <p
-                    style="cursor: pointer;"
+                    style="cursor:pointer;"
                     v-for="(item,index) of returnObj(list.clinicalGuidelinesList,'CPIC')"
                     :key="'CPIC'+index"
-                    @click="toSearchContent(item.liteId,item['geneName'],'gene','2',true)"
+                    @click="toSearchContent('',item['geneName'],'gene','1',true)"
                   >
                     <el-tag
                       color="#c36"
                       class="el-tag"
+                      style="font-family:Times new roman,Times roman;"
                     >
                       <i class="el-icon-document"></i>
-                      {{item["geneName"]}}
+                      {{item['geneName']}}
                     </el-tag>
                   </p>
                 </td>
                 <td>
                   <p
-                    style="cursor: pointer;"
+                    style="cursor:pointer;"
                     v-for="(item,index) of returnObj(list.clinicalGuidelinesList,'DPWG')"
                     :key="'DPWG'+index"
-                    @click="toSearchContent(item.liteId,item['geneName'],'gene','2',true)"
+                    @click="toSeachContent('',item['geneName'],'gene','1',true)"
                   >
                     <el-tag
                       color="#c33"
@@ -148,70 +154,23 @@
                 </td>
                 <td>
                   <p
-                    style="cursor: pointer;"
+                    style="cursor:pointer;"
                     v-for="(item,index) of returnObj(list.clinicalGuidelinesList,'CPNDS')"
                     :key="'CPNDS'+index"
-                    @click="toSearchContent(item.liteId,item['geneName'],'gene','2',true)"
+                    @click="toSearchContent('',item['geneName'],'gene','1',true)"
                   >
                     <el-tag
                       color="#c33"
                       class="el-tag"
                     >
                       <i class="el-icon-document"></i>
-                      {{item["geneName"]}}
-                    </el-tag>
-                  </p>
-                </td>
-                <td>
-                  <p
-                    style="cursor: pointer;"
-                    v-for="(item,index) of returnObj(list.clinicalGuidelinesList,'专家共识')"
-                    :key="'zjgs'+index"
-                    @click="toSearchContent(item.liteId,item['geneName'],'gene','1',true)"
-                  >
-                    <el-tag
-                      color="#f96"
-                      class="el-tag"
-                    >
-                      <i class="el-icon-document"></i>
-                      {{item["geneName"]}}
-                    </el-tag>
-                  </p>
-                </td>
-                <td>
-                  <p
-                    style="cursor: pointer;"
-                    v-for="(item,index) of returnObj(list.clinicalGuidelinesList,'Other')"
-                    :key="'Other'+index"
-                    @click="toSearchContent(item.liteId,item['geneName'],'gene','2',true)"
-                  >
-                    <el-tag
-                      color="#368ebe"
-                      class="el-tag"
-                    >
-                      <i class="el-icon-document"></i>
-                      {{item["geneName"]}}
+                      {{item["geneName "]}}
                     </el-tag>
                   </p>
                 </td>
               </tr>
             </tbody>
           </table>
-        </div>
-        <div class="pagination clearfix">
-          <div
-            class="fl"
-            style="color:#888;"
-          >当前显示{{(pageNum*pageSize-9)+"-"+pageNum*pageSize}}条记录,共{{listAllNum}}条记录</div>
-          <div class="fr">
-            <el-pagination
-              background
-              :page-size="pageSize"
-              @current-change="pageChange"
-              layout="prev, pager, next"
-              :total="listAllNum"
-            ></el-pagination>
-          </div>
         </div>
       </div>
     </label-page>
@@ -228,47 +187,29 @@ import styleConfig, { splitLabel } from '@/utils/style_config.js' // 写死的�
 export default {
   name: 'authority',
   // 生命周期函数
+
   data() {
     return {
-      clientHeight: '',
       isTextInput: true,
       options: styleConfig.authority,
-      search: false,
-      searchField: null,
-      searchString: null,
-      searchOper: null,
-      filterValue: '',
-      filterSValue: '',
+      filterSValue: '', // 下拉列表待选项
       pageSize: 10,
       pageNum: 1,
       listAllNum: 0,
       tableData: {},
+      search: false,
+      searchField: null,
+      searchString: null, // 简单筛选
+      searchOper: null,
       loading: false
     }
   },
-  created() {
-    this.getListDatas()
-  },
-  mounted() {
-    // 获取浏览器可视区域高度
-    // this.clientHeight = `${document.documentElement.clientHeight}` // document.body.clientWidth;
-    // // console.log(self.clientHeight);
-    // window.onresize = function temp() {
-    //   this.clientHeight = `${document.documentElement.clientHeight}`
-    // }
-  },
-  watch: {
-    // 如果 `clientHeight` 发生改变，这个函数就会运行
-    // clientHeight: function() {
-    //   this.changeFixed(this.clientHeight)
-    // },
-    // filterSValue(val) {
-    //   this.isTextInput = splitLabel(val)[0] !== 'source'
-    // }
-  },
+  created() {},
+  mounted() {},
+  watch: {},
   methods: {
     getPageData() {
-      this.pageNum = 1
+      this.page = 1
       this.search = true
       this.searchField = splitLabel(this.filterSValue)
         ? splitLabel(this.filterSValue)[0]
@@ -276,7 +217,7 @@ export default {
       this.searchString = this.isTextInput
         ? this.searchString
         : splitLabel(this.filterSValue)[1]
-      this.searchOper = 'like'
+      this.searchPer = 'like'
       this.getListDatas()
     },
     getListDatas() {
@@ -294,7 +235,6 @@ export default {
         .then(res => {
           let data = JSON.parse(res.result)
           this.loading = false
-          // console.log(data);
           this.tableData = data || {}
           this.listAllNum = data.total
         })
@@ -303,40 +243,15 @@ export default {
           this.loading = false
         })
     },
-    // 动态修改样式
-    // changeFixed(clientHeight) {
-    //   // 动态修改样式
-    //   console.log(clientHeight)
-    //   this.$refs.homePage.style.height = clientHeight + 'px'
-    // },
-    pageChange(v) {
-      if (v === this.pageNum) return // 当下一页与返回数据一样时，即说明已到达最后一页
-      this.pageNum = v
-      this.getListDatas()
-      document.body.scrollTop = document.documentElement.scrollTop = 0
-    },
-    returnObj(arr, str) {
-      if (!arr.length) return false
-      return arr.filter(res => res.source === str)
-    },
-    toSearchContent(geneId, name, type, str, num) {
-      // console.log(num);
+    toSearchControl(geneId, name, type, str, num) {
       if (!num) return
-      // let routeData = this.$router.resolve({
-      //   path: '/searchContent',
-      //   query: {
-      //     key: name,
-      //     id: geneId,
-      //     type: type,
-      //     tabs: str
-      //   }
-      // })
       let routeData = this.$router.resolve({
-        path: '/clinicalGuidelinesDeatil',
+        path: '/toSearchContent',
         query: {
-          literId: geneId,
-          type: str === '1' ? '1' : '2',
-          num: num
+          key: name,
+          id: geneId,
+          type: type,
+          tabs: str
         }
       })
       window.open(routeData.href, '_blank')

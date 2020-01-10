@@ -18,7 +18,10 @@
     </div>
     <div style="border-top:1px solid #eee;">
       <div class="w clearfix d-flex">
-        <div class="left-box">
+        <div
+          class="left-box"
+          v-if="this.queryObj.num !=='true'"
+        >
           <b style="font-size:16px; color:#333;">题目</b>
           <ul class="tips-list">
             <li

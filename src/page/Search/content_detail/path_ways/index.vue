@@ -3,7 +3,9 @@
     <div class="box-top-title gene-box">
       <p class="w">
         <i class="icon-box"></i>
-        {{pathWays}}
+        <!-- {{pathWays}} -->
+        {{this.queryObj.key}}
+
       </p>
     </div>
     <div class="w clearfix d-flex">
@@ -188,7 +190,10 @@
                 align="center"
               >
                 <template slot-scope="scope">
-                  <p style="font-family:Times new roman,Times roman;">（{{scope.row.relatedPathways}}）</p>
+                  <p
+                    style="color:#398dbc;cursor: pointer;font-family:Times new roman,Times roman;"
+                    @click="ToDetailPages(scope.row)"
+                  >{{scope.row.relatedPathways}}</p>
                 </template>
               </el-table-column>
               <el-table-column
@@ -335,7 +340,8 @@ export default {
       relatedParhways: [],
       inputValue: '',
       pathwaysData: [],
-      pathways_Data: []
+      pathways_Data: [],
+      pathwaysNew: ''
     }
   },
   created() {
@@ -414,27 +420,36 @@ export default {
           key: this.queryObj.key
         }
       })
-
       this.setPageData()
+      window.open(routeData.href, '_blank')
+    },
+    ToDetailPages(obj) {
+      // obj.pathways = obj.relatedPathways
+      // this.pathWays = obj.relatedPathways
+      let routeData = this.$router.resolve({
+        path: '/path-ways',
+        query: {
+          key: obj.relatedPathways
+        }
+      })
+      setStore('path_ways', obj.pathways)
       window.open(routeData.href, '_blank')
     },
     setPageData() {
       let pageData = []
       pageData = this.pathways_Data
-      //
       setStore('path_ways_detail', pageData)
     }
+  },
+  computed: {
+    searchWord() {
+      let relatedParhwaysValue = this.relatedParhwaysValue.toLowerCase()
+      return (this.channels || []).filter(
+        channel =>
+          channel.channelName.toLowerCase().indexOf(relatedParhwaysValue) !== -1
+      )
+    }
   }
-  // ,
-  // computed: {
-  //   searchWord() {
-  //     let relatedParhwaysValue = this.relatedParhwaysValue.toLowerCase();
-  //     return (this.channels || []).filter(
-  //       channel =>
-  //         channel.channelName.toLowerCase().indexOf(relatedParhwaysValue) !== -1
-  //     );
-  //   }
-  // }
 }
 </script>
 

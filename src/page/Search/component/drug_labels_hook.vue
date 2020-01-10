@@ -219,7 +219,7 @@ export default {
     toDetailPage(obj) {
       // console.log(1212);
       // console.log(obj);
-
+      debugger
       if (!obj || !obj.literId) return
       let id = obj.literId
       let routeData

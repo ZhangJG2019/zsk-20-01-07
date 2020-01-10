@@ -92,13 +92,13 @@ export default {
           ? { geneId: this.queryData.id || '', name: this.queryData.key || '' }
           : this.queryData.type === 'project'
           ? {
-            projectId: this.queryData.id || this.queryData.projectId || '',
-            name: this.queryData.key || ''
-          }
+              projectId: this.queryData.id || this.queryData.projectId || '',
+              name: this.queryData.key || ''
+            }
           : {
-            drugId: this.queryData.id || '',
-            name: this.queryData.key || ''
-          }
+              drugId: this.queryData.id || '',
+              name: this.queryData.key || ''
+            }
 
       let queryData =
         this.queryData.type === 'gene'
@@ -113,6 +113,8 @@ export default {
       })
     },
     toDetailPage(obj) {
+      console.log(1111)
+      debugger
       let routeData = null
       if (this.activeName == 'first') {
         routeData = this.$router.resolve({
@@ -122,9 +124,7 @@ export default {
           }
         })
       }
-
       setStore('path_ways', obj.pathways)
-
       window.open(routeData.href, '_blank')
     }
   }

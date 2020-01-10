@@ -166,13 +166,11 @@ export default {
         }
       })
       this.setPageData()
-
       window.open(routeData.href, '_blank')
     },
     setPageData() {
       let pageData = []
       if (this.activeName == 'first') {
-        // console.log(0);
         this.chinaListData.forEach(res => {
           if (res !== null) {
             let literatures = {
