@@ -262,9 +262,9 @@ export default {
     // clientHeight: function() {
     //   this.changeFixed(this.clientHeight)
     // },
-    // filterSValue(val) {
-    //   this.isTextInput = splitLabel(val)[0] !== 'source'
-    // }
+    filterSValue(val) {
+      this.isTextInput = splitLabel(val)[0] !== 'source'
+    }
   },
   methods: {
     getPageData() {
